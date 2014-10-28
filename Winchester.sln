@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winchester", "Winchester\Winchester.csproj", "{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGameConsoleApplication", "ChessGameConsoleApplication\ChessGameConsoleApplication.csproj", "{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
