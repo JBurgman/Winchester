@@ -10,9 +10,6 @@ namespace Winchester
     {
         static void Main(string[] args)
         {
-            
-            
-            //hej
         }
     }
 }
