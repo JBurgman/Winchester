@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ChessGameLibrary
+{
+    /// <summary>
+    /// The player class holds a list of ChessPieces
+    /// </summary>
+    class Player
+    {
+        // Fields
+        
+
+        //Properties
+        List<ChessPiece> Pieces { get; set; }
+
+        int PlayerId { get; private set; }
+
+        // Methods
+
+        void CalculateNextMove(){ }
+
+        void CheckIfThretened() { }
+
+        void MovePiece(Position currenPosition, Position nextPosition) { }
+
+    }
+}
