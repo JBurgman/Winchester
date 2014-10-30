@@ -80,6 +80,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChessGameLibrary\ChessGameLibrary.csproj">
+      <Project>{847ed618-b5c6-4a7a-b712-38f01965610a}</Project>
+      <Name>ChessGameLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

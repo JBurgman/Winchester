@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessGameLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,16 +10,26 @@ namespace ChessGameConsoleApplication
     /// <summary>
     /// This class contains all the UI related attributes and operations
     /// </summary>
-    class ChessBoard
+    class ChessBoard : ChessGame
     {
         // Fields
+        //private int width(){}
+
+        //private int height(){}
 
         // Properties
+        public ChessGame = new chessgame; 
 
         // Constuctors
+        public GameBoard[,]
+
         public ChessBoard() { }
 
         // Methods
+        private tiles()
+        {
+
+        }
 
         /// <summary>
         /// Start the gameloop and initialize the chessboard
@@ -26,10 +37,10 @@ namespace ChessGameConsoleApplication
         internal void Initialize()
         {
             // Call the Print method
-            Print();
+            DrawChessBoard();
         }
 
-        void Print()
+        void DrawChessBoard()
         {
             Console.WriteLine(this.GetType().Namespace);
         }
