@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace ChessGameConsoleApplication
 {
-    abstract class ChessBoardLayout
+    public class Position
     {
-        
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
-
-        public virtual void Draw()
+        public Position(int x, int y)
         {
-            
-           
-
+            X = x;
+            Y = y;
         }
     }
 }

@@ -11,27 +11,58 @@ namespace ChessGameConsoleApplication
     /// </summary>
     class ChessBoard
     {
-        // Fields
 
-        // Properties
 
-        // Constuctors
-        public ChessBoard() { }
 
-        // Methods
 
-        /// <summary>
-        /// Start the gameloop and initialize the chessboard
-        /// </summary>
+        
+        public Position PositionX { get; set; }
+        public Position PositionY { get; set; }
+        public int Length { get; private set; }
+
+        
+       
+
+        
+        private Tiles tiles ;
+
+
+
+       
         internal void Initialize()
         {
-            // Call the Print method
-            Print();
+            tiles = new Tiles(new Position(0,0),8,8);
+            Start();
         }
 
-        void Print()
+        
+
+        internal void Start()
         {
-            Console.WriteLine(this.GetType().Namespace);
+
+            while (true)
+            {
+
+                DrawChessBoard(tiles);
+                Console.ReadKey();
+                Console.Clear();
+
+
+            }
+
         }
+
+        void DrawChessBoard(ChessBoardLayout chessBoardLayout)
+        {
+            chessBoardLayout.Draw();
+          
+        }
+
+
+
+
+
+
+
     }
 }
