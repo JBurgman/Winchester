@@ -40,6 +40,7 @@ namespace ChessGameConsoleApplication
                 DrawChessboard();
                 Console.Read();
                 Console.Clear();
+
                 
             }
 
