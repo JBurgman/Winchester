@@ -12,7 +12,7 @@ namespace ChessGameConsoleApplication
 
         public void Log()
         {
-            // Logik för att logga information.
+            // Logik för att logga information. 
         }
     }
 }
