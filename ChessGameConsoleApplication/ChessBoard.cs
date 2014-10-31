@@ -45,7 +45,7 @@ namespace ChessGameConsoleApplication
 
 
         
-        // Call the Print method
+        
         
         }
 
