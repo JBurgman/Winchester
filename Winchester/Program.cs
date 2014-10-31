@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Winchester
 {
-    class Program
+    class MainGame
     {
         static void Main(string[] args)
         {
+
+            // hurp durp
         }
     }
 }
