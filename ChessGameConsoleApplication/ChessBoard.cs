@@ -25,11 +25,31 @@ namespace ChessGameConsoleApplication
         /// </summary>
         internal void Initialize()
         {
-            // Call the Print method
-            Print();
+            // Do initializing stuff
+
+            //Start the game
+            Start();
         }
 
-        void Print()
+        internal void Start()
+        {
+            // Start the gameloop
+            while (true)
+            {
+                
+                DrawChessboard();
+                Console.Read();
+                Console.Clear();
+                
+            }
+
+
+        
+        // Call the Print method
+        
+        }
+
+        void DrawChessboard()
         {
             Console.WriteLine(this.GetType().Namespace);
         }
