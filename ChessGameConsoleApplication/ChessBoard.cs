@@ -12,7 +12,8 @@ namespace ChessGameConsoleApplication
     class ChessBoard
     {
 
-
+        private Tiles tiles ;
+        private PieceSymbol pieceSymbol;
 
 
         
@@ -24,7 +25,7 @@ namespace ChessGameConsoleApplication
        
 
         
-        private Tiles tiles ;
+        
 
 
 
@@ -44,12 +45,21 @@ namespace ChessGameConsoleApplication
             {
 
                 DrawChessBoard(tiles);
+                DrawChessPiece(new PieceSymbol(new Position(0,1),ConsoleColor.White,"B"));
+                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
+
                 Console.ReadKey();
                 Console.Clear();
 
 
             }
 
+        }
+
+        private void DrawChessPiece(PieceSymbol pieceSymbol)
+        {
+            pieceSymbol.Draw();
+               
         }
 
         void DrawChessBoard(ChessBoardLayout chessBoardLayout)
