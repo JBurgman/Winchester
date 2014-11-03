@@ -13,7 +13,7 @@ namespace ChessGameConsoleApplication
     {
 
         private Tiles tiles ;
-        private PieceSymbol pieceSymbol;
+       
 
 
         
