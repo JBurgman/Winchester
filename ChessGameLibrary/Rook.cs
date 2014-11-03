@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Winchester
+namespace ChessGameLibrary
 {
-    class Program
+    class Rook : ChessPiece
     {
-        static void Main(string[] args)
-        {
-            //Test ----
-        }
     }
 }
