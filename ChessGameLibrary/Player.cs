@@ -19,13 +19,7 @@ namespace ChessGameLibrary
 
         int PlayerId { get; private set; }
 
-        // Methods
-
-        void CalculateNextMove(){ }
-
-        void CheckIfThretened() { }
-
-        void MovePiece(Position currentPosition, Position nextPosition) { }
+       
 
     }
 }

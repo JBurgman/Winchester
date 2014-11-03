@@ -11,6 +11,12 @@ namespace ChessGameLibrary
         // Properties
         List<Player> playerList { get; set; }
 
+        // Methods
 
+        void CalculateNextMove() { }
+
+        void CheckIfThretened() { }
+
+        void MovePiece(Position currentPosition, Position nextPosition) { }
     }
 }
