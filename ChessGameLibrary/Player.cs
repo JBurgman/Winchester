@@ -25,7 +25,7 @@ namespace ChessGameLibrary
 
         void CheckIfThretened() { }
 
-        void MovePiece(Position currenPosition, Position nextPosition) { }
+        void MovePiece(Position currentPosition, Position nextPosition) { }
 
     }
 }

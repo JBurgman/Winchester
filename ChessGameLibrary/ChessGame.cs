@@ -8,5 +8,9 @@ namespace ChessGameLibrary
 {
     public class ChessGame
     {
+        // Properties
+        List<Player> playerList { get; set; }
+
+
     }
 }
