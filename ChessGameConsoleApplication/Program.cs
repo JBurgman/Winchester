@@ -21,6 +21,8 @@ namespace ChessGameConsoleApplication
             chessBoard.Initialize();
 
             
+
+            
         }
     }
 }

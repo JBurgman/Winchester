@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Winchester
+namespace ChessGameConsoleApplication
 {
-    class Program
+    abstract class ChessBoardLayout
     {
-        static void Main(string[] args)
+        
+
+
+        public virtual void Draw()
         {
-            //Test ----
+            
+           
+
         }
     }
 }
