@@ -40,7 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChessGame.cs" />
+    <Compile Include="ChessPieceFactory.cs" />
+    <Compile Include="IChessPiece.cs" />
+    <Compile Include="Pawn.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

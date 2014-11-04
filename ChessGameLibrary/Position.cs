@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    class Position : ChessPiece
+    public enum PieceType
     {
-        public int PositionY { get; set; }
-        public int PositionX { get; set; }
+        Pawn
+    }
+    public class Position
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Position(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
     }
 }

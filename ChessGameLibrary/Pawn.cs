@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    class Pawn : ChessPiece
+    public class Pawn:IChessPiece
     {
-        private bool startPosition { get; set; }
+        public Position StartPosition { get; set; }
+        public Position ChessPiecePosition { get; set; }
+        public int PieceId { get; set; }
+        public PieceType PieceType { get; set; }
 
-        //return?
-        public void ValidMove(Position pos)
+        public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType)
         {
-            //Current Position
-            int y = pos.PositionY;
-            int x = pos.PositionX;
-
-
-            //..
+            this.ChessPiecePosition = chessPiecePosition;
+            this.StartPosition = chessPiecePosition;
+            this.PieceId = pieceId;
+            this.PieceType = pieceType;
         }
+
+        public List<Position> GetValidMove() { return null; }
     }
 }

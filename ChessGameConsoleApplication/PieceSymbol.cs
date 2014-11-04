@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
@@ -25,15 +26,9 @@ namespace ChessGameConsoleApplication
             try
             {
 
-
-
-
                     Console.ForegroundColor = PieceColor;
                     Console.SetCursorPosition(Position.X , Position.Y);
                     Console.Write(Symbol);
-
-                
-
 
             }
             catch (ArgumentOutOfRangeException e)
