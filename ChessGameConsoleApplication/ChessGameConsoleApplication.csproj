@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChessBoard.cs" />
+    <Compile Include="FilesRanks.cs" />
     <Compile Include="IChessBoardLayout.cs" />
     <Compile Include="PieceSymbol.cs" />
     <Compile Include="Program.cs" />

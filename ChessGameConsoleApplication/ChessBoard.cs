@@ -20,7 +20,7 @@ namespace ChessGameConsoleApplication
         Position position;
 
 
-        
+       
         public Position Position { get; set; }
        
         public int Length { get; private set; }
@@ -50,6 +50,7 @@ namespace ChessGameConsoleApplication
                 position=player1.Pieces.First().ChessPiecePosition;
 
 
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
                 DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                
@@ -79,6 +80,11 @@ namespace ChessGameConsoleApplication
         {
             chessBoardLayout.Draw();
           
+        }
+
+        void DrawFilesAndRanks(FilesRanks filesRanks)
+        {
+           filesRanks.Draw();
         }
 
 
