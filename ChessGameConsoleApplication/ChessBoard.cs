@@ -3,87 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChessGameLibrary;
-
 
 namespace ChessGameConsoleApplication
 {
     /// <summary>
     /// This class contains all the UI related attributes and operations
     /// </summary>
-    public class ChessBoard
+    class ChessBoard
     {
-        public ChessGame chessGame;
-        private Tiles tiles ;
-        Player player1;
-        Player player2;
-        Position position;
+        // Fields
 
+        // Properties
 
-        
-        public Position Position { get; set; }
-       
-        public int Length { get; private set; }
+        // Constuctors
+        public ChessBoard() { }
 
-       
-        public void Initialize()
+        // Methods
+
+        /// <summary>
+        /// Start the gameloop and initialize the chessboard
+        /// </summary>
+        internal void Initialize()
         {
-            chessGame = new ChessGame();
-
-            chessGame.InitializeChessPieceList();
-            tiles = new Tiles(new Position(0,0),8,8);
-            Start();
+            // Call the Print method
+            Print();
         }
 
-        
-
-        public void Start()
+        void Print()
         {
-
-            while (true)
-            {
-
-                DrawChessBoard(tiles);
-               
-                //---------- This is for testing and will be replaced with real implementaion-------------
-                player1=chessGame.PlayerList.First();
-                position=player1.Pieces.First().ChessPiecePosition;
-
-                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
-               
-                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
-
-                if (position.Y<7)
-                {
-                    position.Y++;
-                }
-                
-                //-----------------------------------------------------------------------------------------
-                Console.ReadKey();
-                Console.Clear();
-
-
-            }
-
+            Console.WriteLine(this.GetType().Namespace);
         }
-
-        private void DrawChessPiece(PieceSymbol pieceSymbol)
-        {
-            pieceSymbol.Draw();
-               
-        }
-
-        void DrawChessBoard(ChessBoardLayout chessBoardLayout)
-        {
-            chessBoardLayout.Draw();
-          
-        }
-
-
-
-
-
-
-
     }
 }
