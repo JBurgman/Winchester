@@ -8,14 +8,14 @@ namespace ChessGameLibrary
 {
     public enum PieceType
     {
-        Pawn
+        Pawn, Knight, Rook, Bishop, King, Queen
     }
     public class Position
     {
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Position(int x, int y)
+        public Position(int x, int y) 
         {
             X = x;
             Y = y;
