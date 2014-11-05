@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    public class Pawn:IChessPiece
+    public class Pawn : IChessPiece
     {
         public Position StartPosition { get; set; }
         public Position ChessPiecePosition { get; set; }
@@ -21,6 +21,9 @@ namespace ChessGameLibrary
             this.PieceType = pieceType;
         }
 
-        public List<Position> GetValidMove() { return null; }
+        public List<Position> GetValidMove()
+        {
+            return null;
+        }
     }
 }

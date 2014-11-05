@@ -49,7 +49,9 @@ namespace ChessGameConsoleApplication
                 player1=chessGame.PlayerList.First();
                 position=player1.Pieces.First().ChessPiecePosition;
 
-                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+
+
+                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                
                 DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
 
