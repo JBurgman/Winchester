@@ -44,6 +44,7 @@ namespace ChessGameLibrary
             {
                ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y));
             }
+            return ValidMove;
             
         }
     }
