@@ -52,9 +52,17 @@ namespace ChessGameConsoleApplication
 
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
-                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                //Trying to see how it will look like
+                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));  // This pawn is the only one who can move, right now. 
+
+                DrawChessPiece(new PieceSymbol(new Position(1,1), ConsoleColor.White, "P"));  // These Pawns can not move.  
+                DrawChessPiece(new PieceSymbol(new Position(2,1), ConsoleColor.White, "P")); //
+                DrawChessPiece(new PieceSymbol(new Position(3,1), ConsoleColor.White, "P")) // 
+
+                DrawChessPiece(new PieceSymbol(new Position(4,3), ConsoleColor.White, "R")); //These three can not move. Only testing to see colours and letters.
+                DrawChessPiece(new PieceSymbol(new Position(2,4), ConsoleColor.Red, "K"));  // 
+                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Red,"Q"));  //
                
-                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Red,"Q"));
 
                 if (position.Y<7)
                 {
