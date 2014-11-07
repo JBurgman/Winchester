@@ -18,6 +18,8 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
+        public Logger Logger = new Logger();
+
 
         // Properties
         public List<Player> PlayerList { get; set; }
@@ -36,16 +38,68 @@ namespace ChessGameLibrary
 
         // Methods
 
-        public void InitializeChessPieceList()
+        public void InitializeChessPieceList() //not done
         {
             PlayerList.First().CreateChessPieceList();
         }
 
-        void CalculateNextMove() { }
+        //
+        void CalculateNextMove() //not done
+        {
+            for (int i = 1; i < 16; i++)
+            {
+                CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
+            }
+        }
 
-        void CheckIfThretened() { }
+      
+        bool CheckIfThreatened(int PieceId) //not done
+        {
+            bool threatened = false;
 
-        void MovePiece(Position currentPosition, Position nextPosition) { }
-        Player ChangePlayer(Player player) { return player; }
+            Player Opponent;
+            if (CurrentPlayer.PlayerId == ChessColor.White)
+                Opponent = player2;
+            else
+                Opponent = player1;
+
+            for (int i = 1; i < 16; i++)
+            {
+                
+            }
+
+                return threatened;
+        }
+
+
+        void MovePiece(Position nextPosition, IChessPiece chessPiece)
+        {
+            //Check if opponents pice gets taken
+            Player Opponent;
+            if (CurrentPlayer.PlayerId == ChessColor.White)
+                Opponent = player2;
+            else
+                Opponent = player1;
+
+            for (int i = 1; i < 16; i++)
+            {
+                if (Opponent.Pieces[i].ChessPiecePosition == nextPosition)
+                    Opponent.Pieces[i].ChessPiecePosition = null;
+            }
+
+            //Moves piece to new position
+            CurrentPlayer.Pieces[chessPiece.PieceId].ChessPiecePosition = nextPosition;
+        }
+
+
+        public void ChangePlayer(Player player)
+        {
+            if (player.PlayerId == ChessColor.White)
+                player = player2;
+            else
+                player = player1;
+
+            this.CurrentPlayer = player; 
+        }
     }
 }

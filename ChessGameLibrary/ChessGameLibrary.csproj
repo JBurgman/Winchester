@@ -42,6 +42,7 @@
     <Compile Include="ChessGame.cs" />
     <Compile Include="ChessPieceFactory.cs" />
     <Compile Include="IChessPiece.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
