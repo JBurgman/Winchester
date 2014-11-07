@@ -44,7 +44,7 @@ namespace ChessGameLibrary
         }
 
         //
-        void CalculateNextMove() //not done
+        public void CalculateNextMove() //not done
         {
             for (int i = 1; i < 16; i++)
             {
