@@ -12,7 +12,7 @@ namespace ChessGameLibrary
         int PieceId { get; set; }
         PieceType PieceType { get; set; }
 
-        List<Position> GetValidMove();
+        List<Position> GetValidMove(Player CurrentPlayer, Player Opponent);
 
     }
 }

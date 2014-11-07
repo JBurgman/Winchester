@@ -26,7 +26,7 @@ namespace ChessGameLibrary
 
 
 
-        public List<Position> GetValidMove()
+        public List<Position> GetValidMove(Player currentPlayer, Player Opponent)
         {
             ValidMove = new List<Position>();
             {

@@ -30,7 +30,7 @@ namespace ChessGameLibrary
         ///  GetValidMove är en lista över hur en pjäs kan röra sig.
         /// </summary>
         /// <returns></returns>
-        public List<Position> GetValidMove()
+        public List<Position> GetValidMove(Player currentPlayer, Player Opponent)
         {
             ValidMove = new List<Position>();
             {
