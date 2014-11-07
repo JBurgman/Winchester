@@ -15,8 +15,8 @@ namespace ChessGameConsoleApplication
     {
         public ChessGame chessGame;
         private Tiles tiles ;
-        Player player1;
-        Player player2;
+        //Player player1;
+        //Player player2;
         Position position;
 
 
@@ -44,27 +44,36 @@ namespace ChessGameConsoleApplication
             {
 
                 DrawChessBoard(tiles);
-               
-                //---------- This is for testing and will be replaced with real implementaion-------------
-                player1=chessGame.PlayerList.First();
-                position=player1.Pieces.First().ChessPiecePosition;
-
-                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
-               
-                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
-
-                if (position.Y<7)
-                {
-                    position.Y++;
-                }
+                ChessPiecesSetUp();
+                chessGame.NextMove();
                 
-                //-----------------------------------------------------------------------------------------
+               
                 Console.ReadKey();
                 Console.Clear();
 
 
             }
 
+        }
+
+        private void ChessPiecesSetUp()
+        {
+            foreach (var player in chessGame.PlayerList)
+            {
+                foreach (var chesspiece in player.Pieces)
+                {
+                    position = chesspiece.ChessPiecePosition;
+                    if (chesspiece.PieceId<=8)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                    }
+                    else
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
+                    }
+                    
+                }
+            }
         }
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)

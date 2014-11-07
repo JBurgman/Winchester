@@ -13,7 +13,7 @@ namespace ChessGameLibrary
     {
         // Fields
         private readonly ChessPieceFactory chessPieceFactory;
-        private IChessPiece chessPiece;
+        ////private IChessPiece chessPiece;
 
         //Properties
         public List<IChessPiece> Pieces { get; set; }
@@ -22,16 +22,16 @@ namespace ChessGameLibrary
 
         public Player(ChessColor playerId)
         {
-            Pieces = new List<IChessPiece>();
-            chessPieceFactory = new ChessPieceFactory();
+            
+            chessPieceFactory = new ChessPieceFactory(new List<IChessPiece>());
 
             this.PlayerId = playerId;
         }
 
         public void CreateChessPieceList() 
         {
-            chessPiece = chessPieceFactory.CreateChessPiece();
-            this.Pieces.Add(chessPiece);
+            Pieces=chessPieceFactory.CreateChessPiece(PlayerId);
+           
         }
 
        
