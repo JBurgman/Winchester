@@ -41,11 +41,17 @@
   <ItemGroup>
     <Compile Include="ChessGame.cs" />
     <Compile Include="ChessPieceFactory.cs" />
+    <Compile Include="IChessGame.cs" />
     <Compile Include="IChessPiece.cs" />
+    <Compile Include="King.cs" />
+    <Compile Include="Knight.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queen.cs" />
+    <Compile Include="Rook.cs" />
+    <Compile Include="Bishop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
