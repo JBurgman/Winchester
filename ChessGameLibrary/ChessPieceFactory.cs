@@ -8,9 +8,35 @@ namespace ChessGameLibrary
 {
     public class ChessPieceFactory
     {
-        public IChessPiece CreateChessPiece()
+        // Fields
+        readonly List<IChessPiece> pieces;
+        
+        public ChessPieceFactory(List<IChessPiece> pieces)
         {
-            return new Pawn(new Position(0, 1), 1,PieceType.Pawn); 
+            this.pieces = pieces;
+        }
+        public List<IChessPiece> CreateChessPiece(ChessColor playerId)
+        {
+            if (playerId==ChessColor.White)
+            {
+
+                for (int i = 0; i < 8; i++)
+                {
+                    pieces.Add(new Pawn(new Position(i, 1), i + 1, PieceType.Pawn));
+                }
+                
+            }
+            else
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    pieces.Add(new Pawn(new Position(i, 6), i + 9, PieceType.Pawn));
+                }
+
+            }
+            return pieces;
+
+           
         }
     }
 }
