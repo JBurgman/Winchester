@@ -18,6 +18,7 @@ namespace ChessGameConsoleApplication
         Player player1;
         Player player2;
         Position position;
+        public List<string> LogPost;  
 
 
        
@@ -49,6 +50,8 @@ namespace ChessGameConsoleApplication
                 player1=chessGame.PlayerList.First();
                 position=player1.Pieces.First().ChessPiecePosition;
 
+
+                DrawLogPost(new PrintLogs(),chessGame.LogPost);
 
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
@@ -87,6 +90,11 @@ namespace ChessGameConsoleApplication
            filesRanks.Draw();
         }
 
+        void DrawLogPost(PrintLogs printLog, List<string> printLogs)
+        {
+            this.chessGame.LogPost = printLogs;
+            printLog.Draw();
+        }
 
 
 
