@@ -7,7 +7,7 @@ using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
-    internal class Tiles : ChessBoardLayout
+    internal class Tiles : IChessBoardLayout
     {
 
         public Position StartPosition { get; set; }
@@ -20,9 +20,9 @@ namespace ChessGameConsoleApplication
             this.Width = width;
             this.Height = height;
         }
-        public override void Draw()
+        public void Draw()
         {
-
+            
             for (int i = 0; i < this.Width; i++)
             {
 

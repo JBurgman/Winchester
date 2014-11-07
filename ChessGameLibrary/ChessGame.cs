@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessGameLibrary
+namespace ChessGameLibrary 
 {
     public enum ChessColor
     {
@@ -12,7 +12,8 @@ namespace ChessGameLibrary
         Black
 
     }
-    public class ChessGame
+
+    public class ChessGame : IChessGame, IChessPiece
     {
         //
         //Fields
@@ -22,6 +23,9 @@ namespace ChessGameLibrary
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
+        public Position ChessPiecePosition { get; set; }
+        public int PieceId { get; set; }
+        public PieceType PieceType { get; set; }
 
         public ChessGame()
         {
@@ -41,11 +45,29 @@ namespace ChessGameLibrary
             PlayerList.First().CreateChessPieceList();
         }
 
-        void CalculateNextMove() { }
+        public void CalculateNextMove()
+        {
+            
+        }
 
-        void CheckIfThretened() { }
+        public void CheckIfThretened()
+        {
+            
+        }
 
-        void MovePiece(Position currentPosition, Position nextPosition) { }
-        Player ChangePlayer(Player player) { return player; }
+        public void MovePiece(Position currentPosition, Position nextPosition)
+        {
+            
+        }
+
+        public Player ChangePlayer(Player player)
+        {
+            return player; 
+        }
+
+        public List<Position> GetValidMove()
+        {
+            return new List<Position>(); //Har den så länge så visual studio inte ska klaga..
+        }
     }
 }
