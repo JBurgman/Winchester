@@ -40,7 +40,10 @@ namespace ChessGameLibrary
 
         public void InitializeChessPieceList() //not done
         {
-            PlayerList.First().CreateChessPieceList();
+            foreach (var player in PlayerList)
+            {
+                player.CreateChessPieceList();
+            }
         }
 
         //
