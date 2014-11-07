@@ -13,13 +13,21 @@ namespace ChessGameConsoleApplication
         public Position StartPosition { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
-
+        /// <summary>
+        /// This is a constructor made to tell us what we need when we create an instance of the class "Tiles"
+        /// </summary>
+        /// <param name="startPosition"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         public Tiles(Position startPosition, int width, int height)
         {
             StartPosition = startPosition;
             this.Width = width;
             this.Height = height;
         }
+        /// <summary>
+        /// This method contains the logic to draw the tiles, therefore the chessboard
+        /// </summary>
         public void Draw()
         {
             

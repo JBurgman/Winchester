@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChessGameConsoleApplication
 {
+    /// <summary>
+    /// This class contains the method to draw files (a-h) and ranks (1-8) around the chessboard
+    /// </summary>
     public class FilesRanks : IChessBoardLayout
     {
 
@@ -15,27 +18,29 @@ namespace ChessGameConsoleApplication
             this.TextColor = textColor;
         }
        
+        /// <summary>
+       /// This method draw the files (a-h) and ranks (1-8) around the chessboard
+       /// </summary>
         public void Draw()
         {
-
-            //Files (A-H)
+            //Files (a-h)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 8);
-            Console.WriteLine("A");
+            Console.WriteLine("a");
             Console.SetCursorPosition(1, 8);
-            Console.WriteLine("B");
+            Console.WriteLine("b");
             Console.SetCursorPosition(2, 8);
-            Console.WriteLine("C");
+            Console.WriteLine("c");
             Console.SetCursorPosition(3, 8);
-            Console.WriteLine("D");
+            Console.WriteLine("d");
             Console.SetCursorPosition(4, 8);
-            Console.WriteLine("E");
+            Console.WriteLine("e");
             Console.SetCursorPosition(5, 8);
-            Console.WriteLine("F");
+            Console.WriteLine("f");
             Console.SetCursorPosition(6, 8);
-            Console.WriteLine("G");
+            Console.WriteLine("g");
             Console.SetCursorPosition(7, 8);
-            Console.WriteLine("H");
+            Console.WriteLine("h");
             //Ranks (1-8)
             Console.SetCursorPosition(8, 0);
             Console.WriteLine("8");

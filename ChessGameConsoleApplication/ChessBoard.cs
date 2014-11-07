@@ -25,7 +25,9 @@ namespace ChessGameConsoleApplication
        
         public int Length { get; private set; }
 
-       
+       /// <summary>
+       /// This method creates the gameboard and initializes the game
+       /// </summary>
         public void Initialize()
         {
             chessGame = new ChessGame();
@@ -35,11 +37,12 @@ namespace ChessGameConsoleApplication
             Start();
         }
 
-        
-
+        /// <summary>
+        /// This method starts the game and uses the draw-methods to draw everything on the console
+        /// </summary>
         public void Start()
         {
-
+            
             while (true)
             {
 
@@ -69,19 +72,29 @@ namespace ChessGameConsoleApplication
             }
 
         }
-
+        /// <summary>
+        /// This method is used to draw the chesspieces on the chessboard
+        /// </summary>
+        /// <param name="pieceSymbol"></param>
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
             pieceSymbol.Draw();
                
         }
 
+        /// <summary>
+        /// This method is used to draw the chessboard
+        /// </summary>
+        /// <param name="chessBoardLayout"></param>
         void DrawChessBoard(IChessBoardLayout chessBoardLayout)
         {
             chessBoardLayout.Draw();
           
         }
-
+        /// <summary>
+        /// This method is used to draw the files (a-h) and ranks (1-8)
+        /// </summary>
+        /// <param name="filesRanks"></param>
         void DrawFilesAndRanks(FilesRanks filesRanks)
         {
            filesRanks.Draw();

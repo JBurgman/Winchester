@@ -26,7 +26,9 @@ namespace ChessGameLibrary
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
-
+        /// <summary>
+        /// This method creates a playerlist where two players, each one of them assigned with a unique color, are added.
+        /// </summary>
         public ChessGame()
         {
             PlayerList = new List<Player>();
@@ -40,21 +42,35 @@ namespace ChessGameLibrary
 
         // Methods
 
+        /// <summary>
+        /// This method creates a chesspiece list for one of the players.
+        /// </summary>
         public void InitializeChessPieceList()
         {
             PlayerList.First().CreateChessPieceList();
         }
 
+        /// <summary>
+        /// This method calculates the next move to make
+        /// </summary>
         public void CalculateNextMove()
         {
             
         }
 
+        /// <summary>
+        /// This method checks if a chesspiece is threatend
+        /// </summary>
         public void CheckIfThretened()
         {
             
         }
 
+        /// <summary>
+        /// This method is used to move a chesspiece.
+        /// </summary>
+        /// <param name="currentPosition"></param>
+        /// <param name="nextPosition"></param>
         public void MovePiece(Position currentPosition, Position nextPosition)
         {
             
