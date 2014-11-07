@@ -82,7 +82,7 @@ namespace ChessGameConsoleApplication
                
         }
 
-        void DrawChessBoard(ChessBoardLayout chessBoardLayout)
+        void DrawChessBoard(IChessBoardLayout chessBoardLayout)
         {
             chessBoardLayout.Draw();
           
