@@ -67,7 +67,7 @@ namespace ChessGameConsoleApplication
 
 
             }
-            // why isnt this working 
+       
         }
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
