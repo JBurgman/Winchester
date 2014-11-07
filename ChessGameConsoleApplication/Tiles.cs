@@ -30,7 +30,7 @@ namespace ChessGameConsoleApplication
                 {
                     if (((i % 2 == 0) && (j % 2 == 0)) || ((i % 2 == 1) && (j % 2 == 1))) // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                     }
                     else
                     {
