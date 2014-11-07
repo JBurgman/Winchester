@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChessGameLibrary
+namespace ChessGameLibrary 
 {
     public enum ChessColor
     {
@@ -12,18 +12,20 @@ namespace ChessGameLibrary
         Black
 
     }
-    public class ChessGame
+
+    public class ChessGame : IChessGame, IChessPiece
     {
         //
         //Fields
         Player player1;
         Player player2;
-        public Logger Logger = new Logger();
-
 
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
+        public Position ChessPiecePosition { get; set; }
+        public int PieceId { get; set; }
+        public PieceType PieceType { get; set; }
 
         public ChessGame()
         {
@@ -38,68 +40,34 @@ namespace ChessGameLibrary
 
         // Methods
 
-        public void InitializeChessPieceList() //not done
+        public void InitializeChessPieceList()
         {
             PlayerList.First().CreateChessPieceList();
         }
 
-        //
-        void CalculateNextMove() //not done
+        public void CalculateNextMove()
         {
-            for (int i = 1; i < 16; i++)
-            {
-                CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
-            }
+            
         }
 
-      
-        bool CheckIfThreatened(int PieceId) //not done
+        public void CheckIfThretened()
         {
-            bool threatened = false;
-
-            Player Opponent;
-            if (CurrentPlayer.PlayerId == ChessColor.White)
-                Opponent = player2;
-            else
-                Opponent = player1;
-
-            for (int i = 1; i < 16; i++)
-            {
-                
-            }
-
-                return threatened;
+            
         }
 
-
-        void MovePiece(Position nextPosition, IChessPiece chessPiece)
+        public void MovePiece(Position currentPosition, Position nextPosition)
         {
-            //Check if opponents pice gets taken
-            Player Opponent;
-            if (CurrentPlayer.PlayerId == ChessColor.White)
-                Opponent = player2;
-            else
-                Opponent = player1;
-
-            for (int i = 1; i < 16; i++)
-            {
-                if (Opponent.Pieces[i].ChessPiecePosition == nextPosition)
-                    Opponent.Pieces[i].ChessPiecePosition = null;
-            }
-
-            //Moves piece to new position
-            CurrentPlayer.Pieces[chessPiece.PieceId].ChessPiecePosition = nextPosition;
+            
         }
 
-
-        public void ChangePlayer(Player player)
+        public Player ChangePlayer(Player player)
         {
-            if (player.PlayerId == ChessColor.White)
-                player = player2;
-            else
-                player = player1;
+            return player; 
+        }
 
-            this.CurrentPlayer = player; 
+        public List<Position> GetValidMove()
+        {
+            return new List<Position>(); //Har den så länge så visual studio inte ska klaga..
         }
     }
 }

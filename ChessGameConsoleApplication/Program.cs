@@ -20,10 +20,9 @@ namespace ChessGameConsoleApplication
             // Initialize the ChessBoard
             chessBoard.Initialize();
 
-
             
 
-
+            
         }
     }
 }
