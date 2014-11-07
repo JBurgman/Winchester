@@ -18,13 +18,16 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
-        public Logger Logger = new Logger();
+        public Logger l = new Logger();
 
 
+        
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player Opponent { get; set; }
+
+        public List<string> LogPost { get; set; } 
 
         public ChessGame()
         {
@@ -41,11 +44,14 @@ namespace ChessGameLibrary
 
         public void InitializeChessPieceList() //not done
         {
-            PlayerList.First().CreateChessPieceList();
+            foreach (var player in PlayerList)
+            {
+                player.CreateChessPieceList();
+            }
         }
 
-
-        public void CalculateNextMove() //not done
+        //
+        void CalculateNextMove() //not done
         {
             Position nextPos = null;
 
@@ -56,8 +62,8 @@ namespace ChessGameLibrary
                 if (CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Capacity > 0)
                 {
                     availablePieces.Add(availablePieces[i]);
-                }
             }
+        }
 
             //Creates a list of threatened pieces
             List<IChessPiece> threathenedPieces = new List<IChessPiece>();
@@ -66,12 +72,12 @@ namespace ChessGameLibrary
                 if (CheckIfThreatened(availablePieces[i].PieceId) == true)
                     threathenedPieces.Add(CurrentPlayer.Pieces[i]);
             }
-
+      
             //Creates list with the most prioritised pieces
             List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
 
             if (threathenedPieces.Capacity > null)
-            {
+        {
                 for (int i = 1; i < threathenedPieces.Capacity; i++)    //Prioritise threathened pieces that can attack 
                 {
                     if (canAttack(threathenedPieces[i].PieceId) == true)
@@ -152,7 +158,7 @@ namespace ChessGameLibrary
             //Loops through opponents pieces
             for (int i = 1; i < CurrentPlayer.Pieces.Capacity; i++)
             {
-      
+                
                 List<Position> OpponentMoves = Opponent.Pieces[i].GetValidMove(CurrentPlayer, Opponent);
 
                 for (int x = 1; x < Opponent.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Capacity; x++)
