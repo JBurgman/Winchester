@@ -6,16 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChessGameConsoleApplication
 {
-    abstract class ChessBoardLayout
+    interface IChessBoardLayout
     {
-        
 
+        void Draw();
 
-        public virtual void Draw()
-        {
-            
-           
-
-        }
     }
 }

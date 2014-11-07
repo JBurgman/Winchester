@@ -7,7 +7,7 @@ using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
-    class PieceSymbol : ChessBoardLayout
+    class PieceSymbol : IChessBoardLayout
     {
         public Position Position { get; set; }
         public ConsoleColor PieceColor { get; set; }
@@ -20,12 +20,12 @@ namespace ChessGameConsoleApplication
             this.Symbol = symbol;
         }
 
-        public override void Draw()
+        public void Draw()
         {
-            //Implement logic to draw
+            
             try
             {
-
+                    
                     Console.ForegroundColor = PieceColor;
                     Console.SetCursorPosition(Position.X , Position.Y);
                     Console.Write(Symbol);
