@@ -18,6 +18,7 @@ namespace ChessGameConsoleApplication
         Player player1;
         Player player2;
         Position position;
+        public List<string> LogPost;  
 
 
        
@@ -44,23 +45,24 @@ namespace ChessGameConsoleApplication
             {
 
                 DrawChessBoard(tiles);
-                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
-                ChessPiecesSetUp();
-                //---------- This is for testing and will be replaced with real implementaion-------------
-                //player1=chessGame.PlayerList.First();
-                //position=player1.Pieces.First().ChessPiecePosition;
-
-
-                
-
-                //DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                
-                //DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
+                //---------- This is for testing and will be replaced with real implementaion-------------
+                player1=chessGame.PlayerList.First();
+                position=player1.Pieces.First().ChessPiecePosition;
 
-                //if (position.Y<7)
-                //{
-                //    position.Y++;
-                //}
+
+                DrawLogPost(new PrintLogs(),chessGame.LogPost);
+
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
+
+                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+               
+                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
+
+                if (position.Y<7)
+                {
+                    position.Y++;
+                }
                 
                 //-----------------------------------------------------------------------------------------
                 Console.ReadKey();
@@ -69,26 +71,6 @@ namespace ChessGameConsoleApplication
 
             }
 
-        }
-
-        private void ChessPiecesSetUp()
-        {
-            foreach (var player in chessGame.PlayerList)
-            {
-                foreach (var chesspiece in player.Pieces)
-                {
-                    position = chesspiece.ChessPiecePosition;
-                    if (chesspiece.PieceId <= 8)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-                    }
-                    else
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
-                    }
-
-                }
-            }
         }
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
@@ -108,6 +90,11 @@ namespace ChessGameConsoleApplication
            filesRanks.Draw();
         }
 
+        void DrawLogPost(PrintLogs printLog, List<string> printLogs)
+        {
+            this.chessGame.LogPost = printLogs;
+            printLog.Draw();
+        }
 
 
 

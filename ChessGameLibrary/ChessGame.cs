@@ -18,12 +18,15 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
-        public Logger Logger = new Logger();
+        public Logger l = new Logger();
 
-
+       
+        
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
+
+        public List<string> LogPost { get; set; } 
 
         public ChessGame()
         {
