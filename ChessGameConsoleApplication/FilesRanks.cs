@@ -18,7 +18,7 @@ namespace ChessGameConsoleApplication
         public void Draw()
         {
 
-            //Files (A-H)
+            //Files (a-h)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("A");
