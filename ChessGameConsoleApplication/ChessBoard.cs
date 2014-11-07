@@ -45,7 +45,7 @@ namespace ChessGameConsoleApplication
 
                 DrawChessBoard(tiles);
                 ChessPiecesSetUp();
-                chessGame.NextMove();
+                chessGame.CalculateNextMove();
                 
                
                 Console.ReadKey();

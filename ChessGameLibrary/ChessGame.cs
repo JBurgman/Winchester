@@ -23,9 +23,9 @@ namespace ChessGameLibrary
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
-        public Position ChessPiecePosition { get; set; }
-        public int PieceId { get; set; }
-        public PieceType PieceType { get; set; }
+        //public Position ChessPiecePosition { get; set; }
+        //public int PieceId { get; set; }
+        //public PieceType PieceType { get; set; }
 
         public ChessGame()
         {
