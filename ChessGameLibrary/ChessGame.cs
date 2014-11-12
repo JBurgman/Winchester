@@ -76,7 +76,7 @@ namespace ChessGameLibrary
             //Creates list with the most prioritised pieces
             List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
 
-            if (threathenedPieces.Capacity > null)
+            if (threathenedPieces.Capacity > 0)
         {
                 for (int i = 1; i < threathenedPieces.Capacity; i++)    //Prioritise threathened pieces that can attack 
                 {
@@ -84,7 +84,7 @@ namespace ChessGameLibrary
                         prioritisedPieces.Add(threathenedPieces[i]);
                 }
             }
-            else if (prioritisedPieces.Capacity == null)                //If none of the threathened pieces can attack
+            else if (prioritisedPieces.Capacity == 0)                //If none of the threathened pieces can attack
             {
                 for (int i = 1; i < availablePieces.Capacity; i++)
                 {
@@ -102,7 +102,7 @@ namespace ChessGameLibrary
             //------------------------------------------------
 
             //Temporary--------
-            if (prioritisedPieces.Capacity == null)                     //If no piece can attack
+            if (prioritisedPieces.Capacity == 0)                     //If no piece can attack
             {
                 Random id = new Random();
                 int randomID = id.Next(0, availablePieces.Capacity);
@@ -125,7 +125,15 @@ namespace ChessGameLibrary
                 }
             }
 
-            MovePiece(nextPos, CurrentPlayer.Pieces[0]);
+            if (nextPos == null)
+            {
+                //Player cant move -> end game?
+            }
+            else
+            {
+                MovePiece(nextPos, CurrentPlayer.Pieces[0]);
+            }
+            
             //Temporary ^^^^
             
 
