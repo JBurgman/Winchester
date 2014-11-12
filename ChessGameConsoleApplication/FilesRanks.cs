@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChessGameConsoleApplication
 {
     /// <summary>
-    /// This class contains the method to draw the files (a-h) and ranks (1-8)
+    /// This class contains the method to draw the files (A-H) and ranks (1-8)
     /// </summary>
     public class FilesRanks : IChessBoardLayout
     {
@@ -24,11 +24,11 @@ namespace ChessGameConsoleApplication
         }
        
         /// <summary>
-        /// This method prints out the files (a-h) and the ranks (1-8) around the chessboard
+        /// This method prints out the files (A-H) and the ranks (1-8) around the chessboard
         /// </summary>
         public void Draw()
         { 
-            //Files (a-h)
+            //Files (A-H)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 9);
             Console.WriteLine("A");

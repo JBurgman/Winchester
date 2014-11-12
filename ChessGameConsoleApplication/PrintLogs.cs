@@ -28,6 +28,8 @@ namespace ChessGameConsoleApplication
 
         public void Draw()
         {
+
+
                 string s = "hej";
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(15, 0);

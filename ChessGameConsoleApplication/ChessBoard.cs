@@ -70,7 +70,7 @@ namespace ChessGameConsoleApplication
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                     }
-                    else
+                    else 
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
                     }
