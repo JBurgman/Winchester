@@ -57,7 +57,7 @@ namespace ChessGameConsoleApplication
 
                 DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                
-                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Red,"Q"));
+                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
 
                 if (position.Y<7)
                 {

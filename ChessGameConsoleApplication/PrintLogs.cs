@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace ChessGameConsoleApplication
 
 
         private List<string> logPost = new List<string>();
+        private int howManyLogs;
         
 
 
@@ -29,10 +31,21 @@ namespace ChessGameConsoleApplication
 
         public void Draw()
         {
-            string s = "hej";
-            Console.ForegroundColor = ConsoleColor.White;
+            logPost.Add("hej");
+            logPost.Add("qweqwe");
+            logPost.Add("qwewqe");
+            logPost.Add("qqweqwe");
+            logPost.Add("qweqsd");
+            logPost.Add("asdasd");
+            logPost.Add("hejhalå");
             Console.SetCursorPosition(15, 0);
-            Console.WriteLine(s);
+
+            
+            for (int y = 1; y < 6; y++)
+            {
+                Console.SetCursorPosition(15,y);
+                Console.WriteLine(logPost[(logPost.Count - y)]);
+            }
         }
     }
 }
