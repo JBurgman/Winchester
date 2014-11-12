@@ -13,9 +13,6 @@ namespace ChessGameConsoleApplication
        
         private List<IChessPiece> takenPieces = new List<IChessPiece>();
 
-
-
-
         public TakenPieces()
         {
             
