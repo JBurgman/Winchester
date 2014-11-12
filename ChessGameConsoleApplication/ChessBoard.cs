@@ -63,6 +63,9 @@ namespace ChessGameConsoleApplication
                 foreach (var chesspiece in player.Pieces)
                 {
                     position = chesspiece.ChessPiecePosition;
+
+                    Console.BackgroundColor = tiles.GetTileColor(position);
+
                     if (chesspiece.PieceId<=8)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
