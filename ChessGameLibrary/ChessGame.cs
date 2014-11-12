@@ -57,7 +57,7 @@ namespace ChessGameLibrary
                 CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
             }
         }
-
+        
       
         bool CheckIfThreatened(int PieceId) //not done
         {
