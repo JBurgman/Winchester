@@ -14,7 +14,6 @@ namespace ChessGameConsoleApplication
 
 
         private List<string> logPost = new List<string>();
-        private int howManyLogs;
         
 
 
@@ -29,6 +28,9 @@ namespace ChessGameConsoleApplication
             
         }
 
+        /// <summary>
+        /// This method prints out the 5 latest moves.
+        /// </summary>
         public void Draw()
         {
             logPost.Add("hej");

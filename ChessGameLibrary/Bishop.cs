@@ -30,7 +30,12 @@ namespace ChessGameLibrary
         {
             ValidMove = new List<Position>();
             {
+                /// <summary>
+                /// Detta är positioner till och från hur pjäsen kan röra sig
+                /// </summary>
+                /// <returns></returns>
                 ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y));
+
                 ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
                 ValidMove.Add(new Position(ChessPiecePosition.X + 2, ChessPiecePosition.Y + 2));
                 ValidMove.Add(new Position(ChessPiecePosition.X + 3, ChessPiecePosition.Y + 3));
