@@ -22,7 +22,7 @@ namespace ChessGameLibrary
 
                 for (int i = 0; i < 8; i++)
                 {
-                    pieces.Add(new Pawn(new Position(i, 1), i + 1, PieceType.Pawn));
+                    pieces.Add(new Pawn(new Position(i, 1), i + 1, PieceType.Pawn, ChessColor.White));
                 }
                 
             }
@@ -30,7 +30,7 @@ namespace ChessGameLibrary
             {
                 for (int i = 0; i < 8; i++)
                 {
-                    pieces.Add(new Pawn(new Position(i, 6), i + 9, PieceType.Pawn));
+                    pieces.Add(new Pawn(new Position(i, 6), i + 9, PieceType.Pawn, ChessColor.Black));
                 }
 
             }

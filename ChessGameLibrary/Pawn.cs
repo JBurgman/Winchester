@@ -8,20 +8,19 @@ namespace ChessGameLibrary
 {
     public class Pawn:IChessPiece
     {
-
-        public List<Position> ValidMove;
-
         public bool StartPosition { get; set; }
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
+        public ChessColor PieceColor { get; set; }
 
-        public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType)
+        public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
             this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
+            this.PieceColor = pieceColor;
         }
 
 
@@ -29,6 +28,7 @@ namespace ChessGameLibrary
         List<Position> GetMoves(Player player)
         {
             List<Position> Moves = new List<Position>();
+
             if (player.PlayerId == ChessColor.White)
             {
                 Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 1));
@@ -55,65 +55,80 @@ namespace ChessGameLibrary
             return Moves;
         }
 
-        public List<Position> GetValidMove(Player currentPlayer, Player Opponent)
+        public List<Position> GetValidMove(Player currentPlayer, Player Opponent)  //TODO: Can be made easier?
         {
+            List<Position> ValidMove = new List<Position>();
             List<Position> Moves = GetMoves(currentPlayer);
-            bool canMove = true;
 
+
+            bool valid = true;
+
+            
             //Check if piece can move one step --------------------------
-            if (Moves[1].Y < 0 || Moves[1].Y > 7)   //Checks if move is outside of chessboard
+            if (Moves[0].Y < 0 || Moves[0].Y > 7)   //Checks if move is outside of chessboard
             {
-                canMove = false;
+                valid = false;
             }
-            else    //Checks if opponent is blocking
+            else    //Checks if piece is blocking
             {
-                for (int i = 1; i < 16; i++)
+                for (int i = 1; i < Opponent.Pieces.Count; i++)
                 {
-                    if (Moves[1] == Opponent.Pieces[i].ChessPiecePosition)
-                        canMove = false;
+                    if (Moves[0] == Opponent.Pieces[i].ChessPiecePosition)
+                        valid = false;
+                }
+
+                for (int i = 1; i < currentPlayer.Pieces.Count; i++)
+                {
+                    if (Moves[0] == currentPlayer.Pieces[i].ChessPiecePosition)
+                        valid = false;
                 }
             }
 
-            if (canMove == true)    //Adds move if valid
-                ValidMove.Add(Moves[1]);
+            if (valid == true)    //Adds move if valid
+                ValidMove.Add(Moves[0]);
 
 
             //Check if piece can move two steps ------------------------
             if (StartPosition == true)
             {
-                for (int i = 1; i < 16; i++)
+                for (int i = 1; i < Opponent.Pieces.Count; i++)
                 {
-                    if (Moves[4] == Opponent.Pieces[i].ChessPiecePosition) //Checks if opponent is blocking
-                        canMove = false;
+                    if (Moves[3] == Opponent.Pieces[i].ChessPiecePosition) //Checks if piece is blocking
+                        valid = false;
+                }
+
+                for (int i = 1; i < currentPlayer.Pieces.Count; i++)
+                {
+                    if (Moves[3] == currentPlayer.Pieces[i].ChessPiecePosition) //Checks if piece is blocking
+                        valid = false;
                 }
             }
-            if (canMove == true)    //Adds move if valid
-                ValidMove.Add(Moves[4]);
-
-
-            //Check if piece can attack --------------------------------
-            canMove = false;
-            for (int i = 1; i < 16; i++)
-            {
-                if (Moves[2] == Opponent.Pieces[i].ChessPiecePosition)
-                    canMove = true;
-            }
-
-            if (canMove == true)    //Adds move if valid
-                ValidMove.Add(Moves[2]);
-
-
-            //Check if piece can attack --------------------------------
-            canMove = false;
-            for (int i = 1; i < 16; i++)
-            {
-                if (Moves[3] == Opponent.Pieces[i].ChessPiecePosition)
-                    canMove = true;
-            }
-
-            if (canMove == true)    //Adds move if valid
+            if (valid == true)    //Adds move if valid
                 ValidMove.Add(Moves[3]);
 
+
+            //Check if piece can attack --------------------------------
+            valid = false;
+            for (int i = 1; i < Opponent.Pieces.Count; i++)
+            {
+                if (Moves[1] == Opponent.Pieces[i].ChessPiecePosition)
+                    valid = true;
+            }
+
+            if (valid == true)    //Adds move if valid
+                ValidMove.Add(Moves[1]);
+
+
+            valid = false;
+            for (int i = 1; i < Opponent.Pieces.Count; i++)
+            {
+                if (Moves[2] == Opponent.Pieces[i].ChessPiecePosition)
+                    valid = true;
+            }
+
+            if (valid == true)    //Adds move if valid
+                ValidMove.Add(Moves[2]);
+            
 
             return ValidMove;
         }
