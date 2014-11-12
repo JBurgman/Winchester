@@ -10,7 +10,7 @@ namespace ChessGameConsoleApplication
     class TakenPieces : IChessBoardLayout
     {
 
-        private List<IChessPiece> takenPieces; 
+        private List<IChessPiece> takenPieces = new List<IChessPiece>(); 
         
         public void Draw()
         {

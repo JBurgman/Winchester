@@ -44,7 +44,7 @@ namespace ChessGameConsoleApplication
             {
 
                 DrawChessBoard(tiles);
-                ChessPiecesSetUp();
+                //ChessPiecesSetUp();
                 chessGame.CalculateNextMove();
                 
                
@@ -56,28 +56,28 @@ namespace ChessGameConsoleApplication
 
         }
 
-        private void ChessPiecesSetUp()
-        {
-            foreach (var player in chessGame.PlayerList)
-            {
-                foreach (var chesspiece in player.Pieces)
-                {
-                    position = chesspiece.ChessPiecePosition;
+        //private void ChessPiecesSetUp()
+        //{
+        //    foreach (var player in chessGame.PlayerList)
+        //    {
+        //        foreach (var chesspiece in player.Pieces)
+        //        {
+        //            position = chesspiece.ChessPiecePosition;
 
-                    Console.BackgroundColor = tiles.GetTileColor(position);
+        //            Console.BackgroundColor = tiles.GetTileColor(position);
 
-                    if (chesspiece.PieceId<=8)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-                    }
-                    else
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
-                    }
+        //            if (chesspiece.PieceId<=8)
+        //            {
+        //                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+        //            }
+        //            else
+        //            {
+        //                DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
+        //            }
                     
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
