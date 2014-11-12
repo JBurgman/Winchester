@@ -20,7 +20,7 @@ namespace ChessGameLibrary
         {
             this.ChessPiecePosition = chessPiecePosition;
             this.StartPosition = true;
-            PieceId = pieceId;
+            this.PieceId = pieceId;
             this.PieceType = pieceType;
         }
 
