@@ -26,7 +26,9 @@ namespace ChessGameLibrary
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
 
-        public List<string> LogPost { get; set; } 
+        public List<string> LogPost { get; set; }
+
+        public List<IChessPiece> TakenPieces { get; set; }
 
         public ChessGame()
         {
