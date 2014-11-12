@@ -15,8 +15,8 @@ namespace ChessGameConsoleApplication
     {
         public ChessGame chessGame;
         private Tiles tiles ;
-        Player player1;
-        Player player2;
+        //Player player1;
+        //Player player2;
         Position position;
 
 
@@ -46,23 +46,7 @@ namespace ChessGameConsoleApplication
                 DrawChessBoard(tiles);
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
                 ChessPiecesSetUp();
-                //---------- This is for testing and will be replaced with real implementaion-------------
-                //player1=chessGame.PlayerList.First();
-                //position=player1.Pieces.First().ChessPiecePosition;
-
-
-                
-
-                //DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-               
-                //DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
-
-                //if (position.Y<7)
-                //{
-                //    position.Y++;
-                //}
-                
-                //-----------------------------------------------------------------------------------------
+                chessGame.CalculateNextMove();
                 Console.ReadKey();
                 Console.Clear();
 
@@ -80,12 +64,77 @@ namespace ChessGameConsoleApplication
                     position = chesspiece.ChessPiecePosition;
                     if (chesspiece.PieceId <= 8)
                     {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-                    }
-                    else
-                    {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
                     }
+                    else if (chesspiece.PieceId ==9)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
+                    }
+                    else if (chesspiece.PieceId == 10)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
+                    }
+                    else if (chesspiece.PieceId == 11)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
+                    }
+                    else if (chesspiece.PieceId == 12)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "Q"));
+                    }
+                    else if (chesspiece.PieceId == 13)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "K"));
+                    }
+                    else if (chesspiece.PieceId == 14)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
+                    }
+                    else if (chesspiece.PieceId == 15)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
+                    }
+                    else if (chesspiece.PieceId == 16)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
+                    }
+                    else if (chesspiece.PieceId > 16 && chesspiece.PieceId<25)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                    }
+                    else if (chesspiece.PieceId == 25)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                    }
+                    else if (chesspiece.PieceId == 26)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                    }
+                    else if (chesspiece.PieceId == 27)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                    }
+                    else if (chesspiece.PieceId == 28)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "Q"));
+                    }
+                    else if (chesspiece.PieceId == 29)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "K"));
+                    }
+                    else if (chesspiece.PieceId == 30)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                    }
+                    else if (chesspiece.PieceId == 31)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                    }
+                    else if (chesspiece.PieceId == 32)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                    }
+                   
 
                 }
             }

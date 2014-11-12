@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    public class Pawn:IChessPiece
+    public class Pawn : IChessPiece
     {
 
         public List<Position> ValidMove;
@@ -29,23 +29,45 @@ namespace ChessGameLibrary
         public List<Position> GetValidMove()
         {
             ValidMove = new List<Position>();
-            if (StartPosition == true)
+            if (PieceId > 15)// PieceColor.White
             {
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y));
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y+1));
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y+2)); 
+                if (StartPosition == true)
+                {
+                    ValidMove.Add(new Position(ChessPiecePosition.X-1, ChessPiecePosition.Y - 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X+1, ChessPiecePosition.Y - 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 2));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y-1));
+                   
+                }
+                else if (StartPosition == false)
+                {
+                    ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y - 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y - 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 1));
+                }
+                
             }
-            else if (StartPosition == false)
+            else// Black pieces
             {
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y));
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y+1));
+                if (StartPosition == true)
+                {
+                    ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 2));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1)); 
+                    
+                }
+                else if (StartPosition == false)
+                {
+                    ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1));
+                }
+                
             }
-            else
-            {
-               ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y));
-            }
+
             return ValidMove;
-            
+
         }
     }
 }
