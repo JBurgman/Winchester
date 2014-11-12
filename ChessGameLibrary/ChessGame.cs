@@ -14,20 +14,19 @@ namespace ChessGameLibrary
     }
     public class ChessGame
     {
-        //
+
         //Fields
         Player player1;
         Player player2;
         public Logger l = new Logger();
 
-
+       
         
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player Opponent { get; set; }
 
-        public List<string> LogPost { get; set; }
 
         public List<IChessPiece> TakenPieces { get; set; }
 
@@ -44,7 +43,9 @@ namespace ChessGameLibrary
 
         // Methods
 
-        public void InitializeChessPieceList() //not done
+
+
+        public void InitializeChessPieceList() // Create chess pieces and store them in players lists. Done.
         {
             foreach (var player in PlayerList)
             {
@@ -56,16 +57,16 @@ namespace ChessGameLibrary
         void CalculateNextMove() //not done
         {
             Position nextPos = null;
-
+        
             //Creates a list of pieces that can move
             List<IChessPiece> availablePieces = new List<IChessPiece>();
             for(int i = 0; i < CurrentPlayer.Pieces.Count; i++)
-            {
+        {
                 if (CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Count > 0)
-                {
+            {
                     availablePieces.Add(availablePieces[i]);
-                }
             }
+        }
 
             //Creates a list of threatened pieces
             List<IChessPiece> threathenedPieces = new List<IChessPiece>();
@@ -79,7 +80,7 @@ namespace ChessGameLibrary
             List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
 
             if (threathenedPieces.Count > 0)
-            {
+        {
                 for (int i = 1; i < threathenedPieces.Count; i++)    //Prioritise threathened pieces that can attack 
                 {
                     if (canAttack(threathenedPieces[i].PieceId) == true)
@@ -186,7 +187,13 @@ namespace ChessGameLibrary
         void MovePiece(Position nextPosition, IChessPiece chessPiece)
         {
             //Check if opponents pice gets taken
-            for (int i = 1; i < Opponent.Pieces.Count; i++)
+            Player Opponent;
+            if (CurrentPlayer.PlayerId == ChessColor.White)
+                Opponent = player2;
+            else
+                Opponent = player1;
+
+            for (int i = 1; i < 16; i++)
             {
                 if (Opponent.Pieces[i].ChessPiecePosition == nextPosition)
                     Opponent.Pieces[i].ChessPiecePosition = null;
