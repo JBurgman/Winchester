@@ -43,8 +43,8 @@
     <Compile Include="ChessPieceFactory.cs" />
     <Compile Include="IChessGame.cs" />
     <Compile Include="IChessPiece.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="King.cs" />
-    <Compile Include="Knight.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
