@@ -63,6 +63,7 @@
     <Compile Include="PrintLogs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TakenPieces.cs" />
     <Compile Include="Tiles.cs" />
   </ItemGroup>
   <ItemGroup>
