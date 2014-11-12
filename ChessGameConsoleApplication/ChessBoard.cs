@@ -50,7 +50,8 @@ namespace ChessGameConsoleApplication
                 player1=chessGame.PlayerList.First();
                 position=player1.Pieces.First().ChessPiecePosition;
 
-
+                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+                
                 DrawLogPost(new PrintLogs(),chessGame.LogPost);
 
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
@@ -95,6 +96,14 @@ namespace ChessGameConsoleApplication
             this.chessGame.LogPost = printLogs;
             printLog.Draw();
         }
+
+        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
+        {
+            this.chessGame.TakenPieces = takenPieces;
+            takenPiece.Draw();
+        }
+
+
 
 
 
