@@ -57,6 +57,7 @@ namespace ChessGameConsoleApplication
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
                 DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+
                
                 DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
 
