@@ -34,6 +34,7 @@ namespace ChessGameLibrary
 
             //Add move to log
             LogList.Add(player + " moved " + pieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            
         }
     }
 }

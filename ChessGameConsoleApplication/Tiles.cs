@@ -22,15 +22,17 @@ namespace ChessGameConsoleApplication
             this.Width = width;
             this.Height = height;
         }
+
         public void Draw()
         {
-            
+
             for (int i = 0; i < this.Width; i++)
             {
 
                 for (int j = 0; j < this.Height; j++)
                 {
-                    if (((i % 2 == 0) && (j % 2 == 0)) || ((i % 2 == 1) && (j % 2 == 1))) // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+                    if (((i%2 == 0) && (j%2 == 0)) || ((i%2 == 1) && (j%2 == 1)))
+                        // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         tileColor = ConsoleColor.DarkGray;
@@ -53,14 +55,15 @@ namespace ChessGameConsoleApplication
 
         public ConsoleColor GetTileColor(Position pos)
         {
-            if (((pos.X % 2 == 0) && (pos.Y % 2 == 0)) || ((pos.X % 2 == 1) && (pos.Y % 2 == 1))) // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+            if (((pos.X%2 == 0) && (pos.Y%2 == 0)) || ((pos.X%2 == 1) && (pos.Y%2 == 1)))
+                // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
             {
                 return ConsoleColor.DarkGray;
-                }
+            }
             else
             {
                 return ConsoleColor.Black;
-               
+
             }
         }
     }

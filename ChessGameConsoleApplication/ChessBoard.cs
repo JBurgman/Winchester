@@ -14,28 +14,28 @@ namespace ChessGameConsoleApplication
     public class ChessBoard
     {
         public ChessGame chessGame;
-        private Tiles tiles ;
+        private Tiles tiles;
         //Player player1;
         //Player player2;
         Position position;
 
 
-        
+
         public Position Position { get; set; }
-       
+
         public int Length { get; private set; }
 
-       
+
         public void Initialize()
         {
             chessGame = new ChessGame();
 
             chessGame.InitializeChessPieceList();
-            tiles = new Tiles(new Position(0,0),8,8);
+            tiles = new Tiles(new Position(0, 0), 8, 8);
             Start();
         }
 
-        
+
 
         public void Start()
         {
@@ -46,8 +46,8 @@ namespace ChessGameConsoleApplication
                 DrawChessBoard(tiles);
                 ChessPiecesSetUp();
                 chessGame.CalculateNextMove();
-                
-               
+
+
                 Console.ReadKey();
                 Console.Clear();
 
@@ -66,15 +66,15 @@ namespace ChessGameConsoleApplication
 
                     Console.BackgroundColor = tiles.GetTileColor(position);
 
-                    if (chesspiece.PieceId<=8)
+                    if (chesspiece.PieceId <= 8)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                     }
-                    else
+                    else 
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
                     }
-                    
+
                 }
             }
         }
@@ -82,13 +82,13 @@ namespace ChessGameConsoleApplication
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
             pieceSymbol.Draw();
-               
+
         }
 
         void DrawChessBoard(IChessBoardLayout chessBoardLayout)
         {
             chessBoardLayout.Draw();
-          
+
         }
 
 

@@ -26,12 +26,23 @@ namespace ChessGameConsoleApplication
             
         }
 
-        public void Draw()
+        public void Draw()    // Not sure about this. Can not check if it is working. 
         {
-                string s = "hej";
+
+
+                logPost.Add("1. Move");
+                logPost.Add("2.move");
+
+            foreach (var adds in logPost)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine(adds);
+                }
+            }
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(15, 0);
-                Console.WriteLine(s);
+                Console.WriteLine();
            
         }
     }
