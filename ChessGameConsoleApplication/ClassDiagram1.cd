@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChessGameConsoleApplication.ChessBoard">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAAAAACAAAQAgACAAIAJAAgAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ChessBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChessGameConsoleApplication.ChessBoardLayout">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChessBoardLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChessGameConsoleApplication.PieceSymbol">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAgAAAAAAAAAAAAAAAAAAAAEAAACAA=</HashCode>
+      <FileName>PieceSymbol.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChessGameConsoleApplication.Program">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChessGameConsoleApplication.Tiles">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAFAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Tiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChessGameLibrary.ChessGame">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChessGameLibrary.ChessPieceFactory">
+    <Position X="3" Y="5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChessGameLibrary.Pawn" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="5" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ChessGameLibrary.Player">
+    <Position X="3" Y="7.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ChessGameLibrary.Position">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="ChessGameLibrary.IChessPiece">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="ChessGameLibrary.ChessColor">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="ChessGameLibrary.PieceType">
+    <Position X="5.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -9,23 +9,32 @@ namespace ChessGameLibrary
     /// <summary>
     /// The player class holds a list of ChessPieces
     /// </summary>
-    class Player
+    public class Player
     {
         // Fields
-        
+        private readonly ChessPieceFactory chessPieceFactory;
+        ////private IChessPiece chessPiece;
 
         //Properties
-        List<ChessPiece> Pieces { get; set; }
+        public List<IChessPiece> Pieces { get; set; }
 
-        int PlayerId { get; private set; }
+        public ChessColor PlayerId { get; set; }
 
-        // Methods
+        public Player(ChessColor playerId)
+        {
+            
+            chessPieceFactory = new ChessPieceFactory(new List<IChessPiece>());
 
-        void CalculateNextMove(){ }
+            this.PlayerId = playerId;
+        }
 
-        void CheckIfThretened() { }
+        public void CreateChessPieceList() 
+        {
+            Pieces=chessPieceFactory.CreateChessPiece(PlayerId);
+           
+        }
 
-        void MovePiece(Position currenPosition, Position nextPosition) { }
+       
 
     }
 }

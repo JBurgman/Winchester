@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Winchester
 {
-    class MainGame
+    class Program
     {
         static void Main(string[] args)
         {
+            //Test ----
 
-            // hurp durp
+            //hej -test
         }
     }
 }

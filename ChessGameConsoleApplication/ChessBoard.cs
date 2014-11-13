@@ -3,56 +3,118 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessGameLibrary;
+
 
 namespace ChessGameConsoleApplication
 {
     /// <summary>
     /// This class contains all the UI related attributes and operations
     /// </summary>
-    class ChessBoard
+    public class ChessBoard
     {
-        // Fields
+        public ChessGame chessGame;
+        private Tiles tiles;
+        //Player player1;
+        //Player player2;
+        Position position;
 
-        // Properties
 
-        // Constuctors
-        public ChessBoard() { }
 
-        // Methods
+        public Position Position { get; set; }
 
-        /// <summary>
-        /// Start the gameloop and initialize the chessboard
-        /// </summary>
-        internal void Initialize()
+        public int Length { get; private set; }
+
+
+        public void Initialize()
         {
-            // Do initializing stuff
+            chessGame = new ChessGame();
 
-            //Start the game
+            chessGame.InitializeChessPieceList();
+            tiles = new Tiles(new Position(0, 0), 8, 8);
             Start();
         }
 
-        internal void Start()
+
+
+        public void Start()
         {
-            // Start the gameloop
+
             while (true)
             {
-                
-                DrawChessboard();
-                Console.Read();
+
+                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+                DrawLogPost(new PrintLogs(), chessGame.LogPost);
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
+
+                DrawChessBoard(tiles);
+                ChessPiecesSetUp();
+                chessGame.CalculateNextMove();
+
+                Console.ReadKey();
                 Console.Clear();
 
-                
+
             }
 
-
-        
-        // Call the Print method
-        
         }
 
-        void DrawChessboard()
+        private void ChessPiecesSetUp()
         {
-            Console.WriteLine(this.GetType().Namespace);
+            foreach (var player in chessGame.PlayerList)
+            {
+                foreach (var chesspiece in player.Pieces)
+                {
+                    position = chesspiece.ChessPiecePosition;
+
+                    Console.BackgroundColor = tiles.GetTileColor(position);
+
+                    if (chesspiece.PieceId <= 8)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                    }
+                    else 
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Red, "P"));
+                    }
+
+                }
+            }
         }
+
+        private void DrawChessPiece(PieceSymbol pieceSymbol)
+        {
+            pieceSymbol.Draw();
+
+        }
+
+        void DrawChessBoard(IChessBoardLayout chessBoardLayout)
+        {
+            chessBoardLayout.Draw();
+
+        }
+        void DrawFilesAndRanks(FilesRanks filesRanks)
+        {
+            filesRanks.Draw();
+        }
+
+        void DrawLogPost(PrintLogs printLog, List<string> printLogs)
+        {
+            this.chessGame.LogPost = printLogs;
+            printLog.Draw();
+        }
+
+        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
+        {
+            this.chessGame.TakenPieces = takenPieces;
+            takenPiece.Draw();
+        }
+
+      
+
+
+
+
+
     }
 }
