@@ -43,10 +43,13 @@ namespace ChessGameConsoleApplication
             while (true)
             {
 
+                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+                DrawLogPost(new PrintLogs(), chessGame.LogPost);
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
+
                 DrawChessBoard(tiles);
                 ChessPiecesSetUp();
                 chessGame.CalculateNextMove();
-
 
                 Console.ReadKey();
                 Console.Clear();
@@ -72,7 +75,7 @@ namespace ChessGameConsoleApplication
                     }
                     else 
                     {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Red, "P"));
                     }
 
                 }
@@ -90,8 +93,24 @@ namespace ChessGameConsoleApplication
             chessBoardLayout.Draw();
 
         }
+        void DrawFilesAndRanks(FilesRanks filesRanks)
+        {
+            filesRanks.Draw();
+        }
 
+        void DrawLogPost(PrintLogs printLog, List<string> printLogs)
+        {
+            this.chessGame.LogPost = printLogs;
+            printLog.Draw();
+        }
 
+        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
+        {
+            this.chessGame.TakenPieces = takenPieces;
+            takenPiece.Draw();
+        }
+
+      
 
 
 

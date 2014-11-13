@@ -11,7 +11,7 @@ namespace ChessGameConsoleApplication
     {
 
 
-        private List<string> logPost;
+        private List<string> logPost = new List<string>();
 
         
 
@@ -26,23 +26,24 @@ namespace ChessGameConsoleApplication
             
         }
 
-        public void Draw()    // Not sure about this. Can not check if it is working. 
+        public void Draw()    
         {
 
+            logPost.Add("hej");
+            logPost.Add("qweqwe");
+            logPost.Add("qwewqe");
+            logPost.Add("qqweqwe");
+            logPost.Add("qweqsd");
+            logPost.Add("asdasd");
+            logPost.Add("hejhalå");
+            Console.SetCursorPosition(15, 0);
 
-                logPost.Add("1. Move");
-                logPost.Add("2.move");
 
-            foreach (var adds in logPost)
+            for (int y = 1; y < 6; y++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    Console.WriteLine(adds);
-                }
+                Console.SetCursorPosition(15, y);
+                Console.WriteLine(logPost[(logPost.Count - y)]);
             }
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(15, 0);
-                Console.WriteLine();
            
         }
     }
