@@ -54,7 +54,7 @@ namespace ChessGameLibrary
         
         public void CalculateNextMove() //not done
         {
-            for (int i = 1; i < 16; i++)
+            for (int i = 1; i < 8; i++)
             {
                 CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
             }

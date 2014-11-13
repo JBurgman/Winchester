@@ -51,7 +51,7 @@ namespace ChessGameConsoleApplication
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
                 DrawChessBoard(tiles);
-                //ChessPiecesSetUp();
+                ChessPiecesSetUp();
                 chessGame.CalculateNextMove();
                 
                
@@ -71,7 +71,7 @@ namespace ChessGameConsoleApplication
                 {
                     position = chesspiece.ChessPiecePosition;
 
-                    Console.BackgroundColor = tiles.GetTileColor(position);
+                    Console.BackgroundColor = tiles.GetToleColor(position);
 
                     if (chesspiece.PieceId <= 8)
                     {
@@ -113,13 +113,6 @@ namespace ChessGameConsoleApplication
             this.chessGame.TakenPieces = takenPieces;
             takenPiece.Draw();
         }
-
-
-
-
-
-
-
 
     }
 }

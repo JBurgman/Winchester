@@ -14,6 +14,8 @@ namespace ChessGameConsoleApplication
         public int Width { get; set; }
         public int Height { get; set; }
 
+        public ConsoleColor tileColor;
+
         public Tiles(Position startPosition, int width, int height)
         {
             StartPosition = startPosition;
@@ -46,6 +48,19 @@ namespace ChessGameConsoleApplication
                     Console.Write("█");
                 }
                 Console.WriteLine();
+            }
+        }
+
+        public ConsoleColor GetToleColor(Position pos)
+        {
+            if (((pos.X%2 == 0) && (pos.Y%2 == 0)) || ((pos.X%2 == 1) && (pos.Y%2 == 1)))
+                // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+            {
+                return ConsoleColor.DarkGray;
+            }
+            else
+            {
+                return ConsoleColor.Black;
             }
         }
     }
