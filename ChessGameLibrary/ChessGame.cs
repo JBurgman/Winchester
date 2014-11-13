@@ -42,7 +42,6 @@ namespace ChessGameLibrary
         }
 
         // Methods
-
         public void InitializeChessPieceList() //not done
         {
             foreach (var player in PlayerList)
