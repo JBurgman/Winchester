@@ -64,6 +64,7 @@ namespace ChessGameConsoleApplication
             {
                 return ConsoleColor.Black;
 
+                
             }
         }
     }
