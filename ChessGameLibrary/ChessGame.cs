@@ -54,7 +54,7 @@ namespace ChessGameLibrary
         {
             for (int i = 1; i < 16; i++)
             {
-                CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
+                //CheckIfThreatened(CurrentPlayer.Pieces[i].PieceId);
             }
         }
 
