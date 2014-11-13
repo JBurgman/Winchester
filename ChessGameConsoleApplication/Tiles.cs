@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
-    internal class Tiles : ChessBoardLayout
+    internal class Tiles : IChessBoardLayout
     {
 
         public Position StartPosition { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+
+        public ConsoleColor tileColor;
 
         public Tiles(Position startPosition, int width, int height)
         {
@@ -19,9 +22,9 @@ namespace ChessGameConsoleApplication
             this.Width = width;
             this.Height = height;
         }
-        public override void Draw()
+        public void Draw()
         {
-
+            
             for (int i = 0; i < this.Width; i++)
             {
 
@@ -29,7 +32,9 @@ namespace ChessGameConsoleApplication
                 {
                     if (((i % 2 == 0) && (j % 2 == 0)) || ((i % 2 == 1) && (j % 2 == 1))) // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.SetCursorPosition(j, i);
                     }
                     else
                     {
@@ -43,6 +48,19 @@ namespace ChessGameConsoleApplication
                     Console.Write("█");
                 }
                 Console.WriteLine();
+            }
+        }
+
+        public ConsoleColor GetTileColor(Position pos)
+        {
+            if (((pos.X%2 == 0) && (pos.Y%2 == 0)) || ((pos.X%2 == 1) && (pos.Y%2 == 1)))
+                // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+            {
+                return ConsoleColor.DarkGray;
+            }
+            else
+            {
+                return ConsoleColor.Black;
             }
         }
     }
