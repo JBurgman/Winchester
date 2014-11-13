@@ -71,7 +71,7 @@ namespace ChessGameConsoleApplication
                 {
                     position = chesspiece.ChessPiecePosition;
 
-                    Console.BackgroundColor = tiles.GetToleColor(position);
+                    Console.BackgroundColor = tiles.GetTileColor(position);
 
                     if (chesspiece.PieceId <= 8)
                     {
