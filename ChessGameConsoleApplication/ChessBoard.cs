@@ -22,10 +22,10 @@ namespace ChessGameConsoleApplication
 
 
         public Position Position { get; set; }
-
+        
         public int Length { get; private set; }
 
-
+        
         public void Initialize()
         {
             chessGame = new ChessGame();
@@ -35,7 +35,7 @@ namespace ChessGameConsoleApplication
             Start();
         }
 
-
+        
 
         public void Start()
         {
@@ -149,13 +149,13 @@ namespace ChessGameConsoleApplication
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
             pieceSymbol.Draw();
-
+               
         }
 
         void DrawChessBoard(IChessBoardLayout chessBoardLayout)
         {
             chessBoardLayout.Draw();
-
+          
         }
 
         void DrawFilesAndRanks(FilesRanks filesRanks)
