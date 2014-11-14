@@ -70,6 +70,8 @@ namespace ChessGameLibrary
             //Loops trough possible moves
             for (int i = 0; i < Moves.Count; i++)
             {
+                valid = true;
+
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {

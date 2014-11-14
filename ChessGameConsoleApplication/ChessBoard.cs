@@ -18,7 +18,7 @@ namespace ChessGameConsoleApplication
         //Player player1;
         //Player player2;
         Position position;
-        public List<string> LogPost;  
+
 
 
        
@@ -43,16 +43,18 @@ namespace ChessGameConsoleApplication
 
             while (true)
             {
+                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+
+                DrawLogPost(new PrintLogs(), chessGame.log.LogList);
+
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
                 DrawChessBoard(tiles);
-                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
                 ChessPiecesSetUp();
                 chessGame.CalculateNextMove();
+
                 Console.ReadKey();
                 Console.Clear();
-
-
-                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
             }
         }
 
@@ -133,6 +135,12 @@ namespace ChessGameConsoleApplication
            filesRanks.Draw();
         }
 
+        void DrawLogPost(PrintLogs printLog, List<string> logList)
+        {
+            printLog.Update(logList);
+            
+            printLog.Draw();
+        }
 
         void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
         {

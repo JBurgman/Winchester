@@ -1,5 +1,7 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +13,9 @@ namespace ChessGameConsoleApplication
     {
 
 
-        private List<string> logPost;
+        private List<string> logPost {get; set; }
 
-        
+
 
         public PrintLogs(List<string> LogPost)
         {
@@ -23,27 +25,29 @@ namespace ChessGameConsoleApplication
 
         public PrintLogs()
         {
-            
+
         }
 
-        public void Draw()    // Not sure about this. Can not check if it is working. 
+        public void Update(List<string> logList)
+        {
+            this.logPost = logList;
+        }
+
+        /// <summary>
+        /// This method prints out the 5 latest moves.
+        /// </summary>
+        public void Draw()
         {
 
+            Console.SetCursorPosition(15, 0);
 
-                logPost.Add("1. Move");
-                logPost.Add("2.move");
 
-            foreach (var adds in logPost)
-            {
-                for (int i = 0; i < 10; i++)
+                for (int y = 1; y < 6; y++)
                 {
-                    Console.WriteLine(adds);
+                    Console.SetCursorPosition(15, y);
+                    Console.WriteLine(logPost[(logPost.Count - y)]);
                 }
-            }
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(15, 0);
-                Console.WriteLine();
-           
+            
         }
     }
 }

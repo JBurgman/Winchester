@@ -8,7 +8,7 @@ namespace ChessGameLibrary
 {
     public enum PieceType
     {
-        Pawn, Knight, Rook, Bishop, King, Queen
+        Pawn = 1, Knight = 3, Rook = 5, Bishop = 3, King = 10, Queen = 9
     }
     public class Position
     {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,27 +8,24 @@ using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
-    class TakenPieces: IChessBoardLayout
+    class TakenPieces : IChessBoardLayout
     {
-       
+
         private List<IChessPiece> takenPieces = new List<IChessPiece>();
-
-
-
-
-        public TakenPieces()
-        {
-            
-        }
-
 
 
         public void Draw()
         {
-            string s = "haaaaaaaaallååååååååååååååååååååååååå";
-            Console.SetCursorPosition(0,10);
+            Console.ForegroundColor = ConsoleColor.White;
+            string s = "P, K, B, P, P, B, R";
+            Console.SetCursorPosition(0, 12);
             Console.WriteLine(s);
-            
+
+            Console.SetCursorPosition(0, 11);
+            Console.WriteLine("Captured pieces: ");
+
+
+
             foreach (IChessPiece piece in takenPieces)
             {
                 Console.SetCursorPosition(0, 10);
@@ -36,6 +33,6 @@ namespace ChessGameConsoleApplication
             }
         }
 
-        
+
     }
 }

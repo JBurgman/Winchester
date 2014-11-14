@@ -9,6 +9,8 @@ namespace ChessGameLibrary
     class Knight : IChessPiece
     {
 
+        List<Position> Moves = new List<Position>();
+
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
@@ -20,19 +22,22 @@ namespace ChessGameLibrary
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
+            this.Moves = GetMoves();
         }
+
+        //Possible moves for this piece
         public List<Position> GetMoves()
         {
             List<Position> Moves = new List<Position>();
             {
-                Moves.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y - 2));
-                Moves.Add(new Position(ChessPiecePosition.X + 2, ChessPiecePosition.Y - 1));
-                Moves.Add(new Position(ChessPiecePosition.X + 2, ChessPiecePosition.Y + 1));
-                Moves.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 2));
-                Moves.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 2));
-                Moves.Add(new Position(ChessPiecePosition.X - 2, ChessPiecePosition.Y + 1));
-                Moves.Add(new Position(ChessPiecePosition.X - 2, ChessPiecePosition.Y - 1));
-                Moves.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y - 2));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 1, this.ChessPiecePosition.Y - 2));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 2, this.ChessPiecePosition.Y - 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 2, this.ChessPiecePosition.Y + 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 1, this.ChessPiecePosition.Y + 2));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 1, this.ChessPiecePosition.Y + 2));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 2, this.ChessPiecePosition.Y + 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 2, this.ChessPiecePosition.Y - 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 1, this.ChessPiecePosition.Y - 2));
             }
             return Moves;
         }
@@ -41,13 +46,14 @@ namespace ChessGameLibrary
         public List<Position> GetValidMove(Player currentPlayer, Player Opponent)
         {
             List<Position> ValidMove = new List<Position>();
-            List<Position> Moves = GetMoves();
 
             bool valid = true;
 
             //Loops trough possible moves
             for (int i = 0; i < Moves.Count; i++)
             {
+                valid = true;
+
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {

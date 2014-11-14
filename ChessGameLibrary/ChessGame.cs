@@ -18,16 +18,12 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
-        public Logger l = new Logger();
-
-       
+        public Logger log = new Logger();
         
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player Opponent { get; set; }
-
-
         public List<IChessPiece> TakenPieces { get; set; }
 
         public ChessGame()
@@ -122,6 +118,7 @@ namespace ChessGameLibrary
                 movingPiece = availablePieces[mPiece];
             }
 
+                Console.WriteLine(CurrentPlayer.Pieces[10].GetValidMove(CurrentPlayer, Opponent).Count);
 
             if (nextPos == null || movingPiece == null)
             {
@@ -130,6 +127,7 @@ namespace ChessGameLibrary
             }
             else
             {
+                log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
                 MovePiece(nextPos, movingPiece);
             }
             
