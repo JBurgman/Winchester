@@ -25,6 +25,7 @@ namespace ChessGameConsoleApplication
             Console.WriteLine("Captured pieces: ");
             
             
+            
             foreach (IChessPiece piece in takenPieces)
             {
                 Console.SetCursorPosition(0, 10);
