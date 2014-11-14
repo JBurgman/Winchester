@@ -20,12 +20,12 @@ namespace ChessGameConsoleApplication
         Position position;
 
 
-
+       
         public Position Position { get; set; }
-        
+       
         public int Length { get; private set; }
 
-        
+       
         public void Initialize()
         {
             chessGame = new ChessGame();
@@ -49,10 +49,11 @@ namespace ChessGameConsoleApplication
                 chessGame.CalculateNextMove();
                 Console.ReadKey();
                 Console.Clear();
+               
+                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
 
-
+                DrawLogPost(new PrintLogs(), chessGame.LogPost);
             }
-
         }
 
         private void ChessPiecesSetUp()
@@ -139,11 +140,31 @@ namespace ChessGameConsoleApplication
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
                     }
-                    }
-                   
-
                 }
+                
+            
+
+        private void ChessPiecesSetUp()
+        {
+            foreach (var player in chessGame.PlayerList)
+            {
+                foreach (var chesspiece in player.Pieces)
+                {
+                    position = chesspiece.ChessPiecePosition;
+
+                    Console.BackgroundColor = tiles.GetTileColor(position);
+
+                    if (chesspiece.PieceId <= 8)
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                    }
+                    else
+                    {
+                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
             }
+            }
+        }
+        }
         }
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
@@ -157,17 +178,17 @@ namespace ChessGameConsoleApplication
             chessBoardLayout.Draw();
           
         }
-
         void DrawFilesAndRanks(FilesRanks filesRanks)
         {
-            filesRanks.Draw();
+           filesRanks.Draw();
         }
 
 
-
-
-
-
+        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
+        {
+            this.chessGame.TakenPieces = takenPieces;
+            takenPiece.Draw();
+        }
 
     }
 }
