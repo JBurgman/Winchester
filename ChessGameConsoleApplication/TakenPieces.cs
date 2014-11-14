@@ -25,7 +25,7 @@ namespace ChessGameConsoleApplication
 
         public void Draw()
         {
-            string s = "haaaaaaaaalååååååååååååååååååååååååå";
+            string s = "haaaaaaaaallååååååååååååååååååååååååå";
             Console.SetCursorPosition(0,10);
             Console.WriteLine(s);
             

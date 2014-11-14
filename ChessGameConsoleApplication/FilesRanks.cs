@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ChessGameConsoleApplication
 {
     /// <summary>
-    /// This class contains the method to draw the files (a-h) and ranks (1-8)
+    /// This class contains the method to draw the files (A-H) and ranks (1-8)
     /// </summary>
     public class FilesRanks : IChessBoardLayout
     {
@@ -24,11 +24,11 @@ namespace ChessGameConsoleApplication
         }
        
         /// <summary>
-        /// This method prints out the files (a-h) and the ranks (1-8) around the chessboard
+        /// This method prints out the files (A-H) and the ranks (1-8) around the chessboard
         /// </summary>
         public void Draw()
         { 
-            //Files (a-h)
+            //Files (A-H)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 9);
             Console.WriteLine("A");
@@ -47,7 +47,9 @@ namespace ChessGameConsoleApplication
             Console.SetCursorPosition(7, 9);
             Console.WriteLine("H");
 
-            Console.ForegroundColor = TextColor;
+
+
+            //Lines above A-H
             Console.SetCursorPosition(0, 8);
             Console.WriteLine("─");
             Console.SetCursorPosition(1, 8);
@@ -70,21 +72,21 @@ namespace ChessGameConsoleApplication
 
             //Ranks (1-8)
             Console.SetCursorPosition(8, 0);
-            Console.WriteLine("│8");
+            Console.WriteLine("8");
             Console.SetCursorPosition(8, 1);
-            Console.WriteLine("│7");
+            Console.WriteLine("7");
             Console.SetCursorPosition(8, 2);
-            Console.WriteLine("│6");
+            Console.WriteLine("6");
             Console.SetCursorPosition(8, 3);
-            Console.WriteLine("│5");
+            Console.WriteLine("5");
             Console.SetCursorPosition(8, 4);
-            Console.WriteLine("│4");
+            Console.WriteLine("4");
             Console.SetCursorPosition(8, 5);
-            Console.WriteLine("│3");
+            Console.WriteLine("3");
             Console.SetCursorPosition(8, 6);
-            Console.WriteLine("│2");
+            Console.WriteLine("2");
             Console.SetCursorPosition(8, 7);
-            Console.WriteLine("│1");
+            Console.WriteLine("1");
 
 
         }
