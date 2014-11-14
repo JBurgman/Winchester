@@ -18,6 +18,7 @@ namespace ChessGameConsoleApplication
         //Player player1;
         //Player player2;
         Position position;
+        //private TakenPieces takenPieces;
 
 
        
@@ -32,6 +33,8 @@ namespace ChessGameConsoleApplication
 
             chessGame.InitializeChessPieceList();
             tiles = new Tiles(new Position(0, 0), 8, 8);
+
+            
             Start();
         }
 
@@ -46,11 +49,15 @@ namespace ChessGameConsoleApplication
                 DrawChessBoard(tiles);
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
                 ChessPiecesSetUp();
+
+                DrawTakenPieces(new TakenPieces(chessGame.CapturedPieces));
                 chessGame.CalculateNextMove();
                 Console.ReadKey();
                 Console.Clear();
                
-                DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+               
+            }
+        }
 
 
         private void ChessPiecesSetUp()
@@ -140,25 +147,15 @@ namespace ChessGameConsoleApplication
                 }
                 
 
-                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-
                
-                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
-
-                if (position.Y<7)
-                {
-                    position.Y++;
-                }
                 
-                //-----------------------------------------------------------------------------------------
-                Console.ReadKey();
-                Console.Clear();
 
 
             }
         }
         }
-        }
+        
+
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
@@ -177,10 +174,10 @@ namespace ChessGameConsoleApplication
         }
 
 
-        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
+        void DrawTakenPieces(TakenPieces takenPieces)
         {
-            this.chessGame.TakenPieces = takenPieces;
-            takenPiece.Draw();
+            
+            takenPieces.Draw();
         }
 
 
@@ -188,5 +185,6 @@ namespace ChessGameConsoleApplication
 
 
 
-    }
+    
+}
 }

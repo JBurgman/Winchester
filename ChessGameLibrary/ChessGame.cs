@@ -35,7 +35,7 @@ namespace ChessGameLibrary
         public List<IChessPiece> CapturedPieces { get; set; }
 
 
-        public List<IChessPiece> TakenPieces { get; set; } 
+        //public List<IChessPiece> TakenPieces { get; set; } 
 
         public ChessGame()
         {
@@ -264,6 +264,14 @@ namespace ChessGameLibrary
             for (int i = 0; i < 8; i++)
             {
                 whitelist.Enqueue(i + 1);
+            }
+        }
+
+        void InitializeBlackList() // Start with pawns
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                blacklist.Enqueue(i + 1);
             }
         }
     }

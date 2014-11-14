@@ -82,5 +82,9 @@ namespace ChessGameLibrary
             return ValidMove;
 
         }
+        public override string ToString()
+        {
+            return String.Format("P");
+        }
     }
 }
