@@ -68,12 +68,12 @@ namespace ChessGameLibrary
             bool valid = true;
 
             //Loops trough possible moves
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < Moves.Count; i++)
             {
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
                         valid = false;
                 }
 
@@ -81,11 +81,15 @@ namespace ChessGameLibrary
                 if (Moves[i].X < 0 || Moves[i].Y < 0 || Moves[i].X > 7 || Moves[i].Y > 7)
                     valid = false;
 
+
                 //Add move if valid
-                if (valid == true)
+                if (valid == true) 
                     ValidMove.Add(Moves[i]);
 
+                    
+
             }
+
 
             return ValidMove; //Returns list with valid moves
         }

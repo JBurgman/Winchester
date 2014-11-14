@@ -10,7 +10,7 @@ namespace ChessGameLibrary
     {
         public List<string> LogList = new List<string>();
 
-        public void Log(Player currentPlayer, IChessPiece pieceType, Position currentPos, Position nextPos)
+        public void Log(Player currentPlayer, IChessPiece piece, Position currentPos, Position nextPos)
         {
             //Player
             string player;
@@ -33,7 +33,7 @@ namespace ChessGameLibrary
             string nextY = char.ToString(numbers[nextPos.Y]);
 
             //Add move to log
-            LogList.Add(player + " moved " + pieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
         }
     }
 }

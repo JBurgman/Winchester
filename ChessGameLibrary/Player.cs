@@ -24,14 +24,13 @@ namespace ChessGameLibrary
         {
             
             chessPieceFactory = new ChessPieceFactory(new List<IChessPiece>());
-
+            
             this.PlayerId = playerId;
         }
 
         public void CreateChessPieceList() 
         {
-            Pieces=chessPieceFactory.CreateChessPiece(PlayerId);
-           
+            this.Pieces = chessPieceFactory.CreateChessPiece(PlayerId);
         }
 
        

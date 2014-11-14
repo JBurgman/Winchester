@@ -30,49 +30,49 @@ namespace ChessGameLibrary
             List<Position> Moves = new List<Position>();
 
             //Move Left
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X - i, ChessPiecePosition.Y));
             }
 
             //Move Right
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X + i, ChessPiecePosition.Y));
             }
 
             //Move Down
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1));
             }
 
             //Move Up
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 1));
             }
 
             //Move S-E
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X + i, ChessPiecePosition.Y + i));
             }
 
             //Move S-W
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X - i, ChessPiecePosition.Y + i));
             }
 
             //Move N-E
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X + i, ChessPiecePosition.Y - i));
             }
 
             //Move N-W
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X - i, ChessPiecePosition.Y - i));
             }
@@ -98,17 +98,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].X < 0)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -128,17 +134,24 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+
+                //Check if outside border
+                if (Moves[i].X > 7)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -158,17 +171,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].Y > 7)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -188,17 +207,24 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+
+                //Check if outside border
+                if (Moves[i].Y < 0)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -218,17 +244,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].X > 7 || Moves[i].Y > 7)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -248,17 +280,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].X < 0 || Moves[i].Y > 7)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -278,17 +316,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].X > 7 || Moves[i].Y < 0)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
@@ -308,17 +352,23 @@ namespace ChessGameLibrary
                 //Checks square for opponent piece
                 for (int x = 0; x < Opponent.Pieces.Count; x++)
                 {
-                    if (Moves[i] == Opponent.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == Opponent.Pieces[x].ChessPiecePosition.X && Moves[i].Y == Opponent.Pieces[x].ChessPiecePosition.Y)
                         lastMove = true;
                 }
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i] == currentPlayer.Pieces[x].ChessPiecePosition)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
+                    {
                         valid = false;
+                        break;
+                    }
                 }
 
+                //Check if outside border
+                if (Moves[i].X < 0 || Moves[i].Y < 0)
+                    valid = false;
 
                 if (valid == true)
                     ValidMove.Add(Moves[i]);

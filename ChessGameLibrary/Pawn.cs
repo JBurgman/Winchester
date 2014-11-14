@@ -17,7 +17,7 @@ namespace ChessGameLibrary
         public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
-            this.StartPosition = true;
+            this.StartPosition = false;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
@@ -31,24 +31,24 @@ namespace ChessGameLibrary
 
             if (player.PlayerId == ChessColor.White)
             {
-                Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 1));
-                Moves.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y - 1));
-                Moves.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y - 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y - 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 1, this.ChessPiecePosition.Y - 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 1, this.ChessPiecePosition.Y - 1));
 
                 if (StartPosition == true)
                 {
-                    Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 2));
+                    Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y - 2));
                 }
             }
             else
             {
-                Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1));
-                Moves.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 1));
-                Moves.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y + 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X - 1, this.ChessPiecePosition.Y + 1));
+                Moves.Add(new Position(this.ChessPiecePosition.X + 1, this.ChessPiecePosition.Y + 1));
 
                 if (StartPosition == true)
                 {
-                    Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 2));
+                    Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y + 2));
                 }
             }
 
@@ -71,15 +71,15 @@ namespace ChessGameLibrary
             }
             else    //Checks if piece is blocking
             {
-                for (int i = 1; i < Opponent.Pieces.Count; i++)
+                for (int i = 0; i < Opponent.Pieces.Count; i++)
                 {
-                    if (Moves[0] == Opponent.Pieces[i].ChessPiecePosition)
+                    if (Moves[0].X == Opponent.Pieces[i].ChessPiecePosition.X && Moves[0].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
                         valid = false;
                 }
 
-                for (int i = 1; i < currentPlayer.Pieces.Count; i++)
+                for (int i = 0; i < currentPlayer.Pieces.Count; i++)
                 {
-                    if (Moves[0] == currentPlayer.Pieces[i].ChessPiecePosition)
+                    if (Moves[0].X == currentPlayer.Pieces[i].ChessPiecePosition.X && Moves[0].Y == currentPlayer.Pieces[i].ChessPiecePosition.Y)
                         valid = false;
                 }
             }
@@ -91,27 +91,27 @@ namespace ChessGameLibrary
             //Check if piece can move two steps ------------------------
             if (StartPosition == true)
             {
-                for (int i = 1; i < Opponent.Pieces.Count; i++)
+                for (int i = 0; i < Opponent.Pieces.Count; i++)
                 {
-                    if (Moves[3] == Opponent.Pieces[i].ChessPiecePosition) //Checks if piece is blocking
+                    if (Moves[3].X == Opponent.Pieces[i].ChessPiecePosition.X && Moves[3].Y == Opponent.Pieces[i].ChessPiecePosition.Y) //Checks if piece is blocking
                         valid = false;
                 }
 
-                for (int i = 1; i < currentPlayer.Pieces.Count; i++)
+                for (int i = 0; i < currentPlayer.Pieces.Count; i++)
                 {
-                    if (Moves[3] == currentPlayer.Pieces[i].ChessPiecePosition) //Checks if piece is blocking
+                    if (Moves[3].X == currentPlayer.Pieces[i].ChessPiecePosition.X && Moves[3].Y == currentPlayer.Pieces[i].ChessPiecePosition.Y) //Checks if piece is blocking
                         valid = false;
                 }
+
+                if (valid == true)    //Adds move if valid
+                    ValidMove.Add(Moves[3]);
             }
-            if (valid == true)    //Adds move if valid
-                ValidMove.Add(Moves[3]);
-
 
             //Check if piece can attack --------------------------------
             valid = false;
-            for (int i = 1; i < Opponent.Pieces.Count; i++)
+            for (int i = 0; i < Opponent.Pieces.Count; i++)
             {
-                if (Moves[1] == Opponent.Pieces[i].ChessPiecePosition)
+                if (Moves[1].X == Opponent.Pieces[i].ChessPiecePosition.X && Moves[1].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
                     valid = true;
             }
 
@@ -120,15 +120,15 @@ namespace ChessGameLibrary
 
 
             valid = false;
-            for (int i = 1; i < Opponent.Pieces.Count; i++)
+            for (int i = 0; i < Opponent.Pieces.Count; i++)
             {
-                if (Moves[2] == Opponent.Pieces[i].ChessPiecePosition)
+                if (Moves[2].X == Opponent.Pieces[i].ChessPiecePosition.X && Moves[2].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
                     valid = true;
             }
 
             if (valid == true)    //Adds move if valid
                 ValidMove.Add(Moves[2]);
-            
+
 
             return ValidMove;
         }
