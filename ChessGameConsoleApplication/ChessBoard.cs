@@ -14,28 +14,28 @@ namespace ChessGameConsoleApplication
     public class ChessBoard
     {
         public ChessGame chessGame;
-        private Tiles tiles ;
+        private Tiles tiles;
         //Player player1;
         //Player player2;
         Position position;
 
 
-       
+
         public Position Position { get; set; }
-       
+
         public int Length { get; private set; }
 
-       
+
         public void Initialize()
         {
             chessGame = new ChessGame();
 
             chessGame.InitializeChessPieceList();
-            tiles = new Tiles(new Position(0,0),8,8);
+            tiles = new Tiles(new Position(0, 0), 8, 8);
             Start();
         }
 
-        
+
 
         public void Start()
         {
@@ -62,77 +62,83 @@ namespace ChessGameConsoleApplication
                 foreach (var chesspiece in player.Pieces)
                 {
                     position = chesspiece.ChessPiecePosition;
-                    if (chesspiece.PieceId <= 8)
+                    if (chesspiece.PieceColor==ChessColor.Black)
+                    {
+                        if(chesspiece.PieceType==PieceType.Pawn)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
                     }
-                    else if (chesspiece.PieceId ==9)
+                    else if (chesspiece.PieceType==PieceType.Rook)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
                     }
-                    else if (chesspiece.PieceId == 10)
+                    else if (chesspiece.PieceType==PieceType.Knight)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
                     }
-                    else if (chesspiece.PieceId == 11)
+                    else if (chesspiece.PieceType==PieceType.Bishop)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
                     }
-                    else if (chesspiece.PieceId == 12)
+                    else if (chesspiece.PieceType==PieceType.Queen)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "Q"));
                     }
-                    else if (chesspiece.PieceId == 13)
+                    else if (chesspiece.PieceType==PieceType.King)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "K"));
                     }
-                    else if (chesspiece.PieceId == 14)
+                    else if (chesspiece.PieceType==PieceType.Bishop)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
                     }
-                    else if (chesspiece.PieceId == 15)
+                    else if (chesspiece.PieceType==PieceType.Knight)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
                     }
-                    else if (chesspiece.PieceId == 16)
+                    else if (chesspiece.PieceType==PieceType.Rook)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
                     }
-                    else if (chesspiece.PieceId > 16 && chesspiece.PieceId<25)
+                }
+                    if (chesspiece.PieceColor==ChessColor.White)
+                    {
+                        if (chesspiece.PieceType == PieceType.Pawn)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
                     }
-                    else if (chesspiece.PieceId == 25)
+                        else if (chesspiece.PieceType == PieceType.Rook)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
                     }
-                    else if (chesspiece.PieceId == 26)
+                        else if (chesspiece.PieceType == PieceType.Knight)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
                     }
-                    else if (chesspiece.PieceId == 27)
+                        else if (chesspiece.PieceType == PieceType.Bishop)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
                     }
-                    else if (chesspiece.PieceId == 28)
+                        else if (chesspiece.PieceType == PieceType.Queen)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "Q"));
                     }
-                    else if (chesspiece.PieceId == 29)
+                        else if (chesspiece.PieceType == PieceType.King)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "K"));
                     }
-                    else if (chesspiece.PieceId == 30)
+                        else if (chesspiece.PieceType == PieceType.Bishop)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
                     }
-                    else if (chesspiece.PieceId == 31)
+                        else if (chesspiece.PieceType == PieceType.Knight)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
                     }
-                    else if (chesspiece.PieceId == 32)
+                        else if (chesspiece.PieceType == PieceType.Rook)
                     {
                         DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                    }
                     }
                    
 
@@ -143,18 +149,18 @@ namespace ChessGameConsoleApplication
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
             pieceSymbol.Draw();
-               
+
         }
 
         void DrawChessBoard(IChessBoardLayout chessBoardLayout)
         {
             chessBoardLayout.Draw();
-          
+
         }
 
         void DrawFilesAndRanks(FilesRanks filesRanks)
         {
-           filesRanks.Draw();
+            filesRanks.Draw();
         }
 
 

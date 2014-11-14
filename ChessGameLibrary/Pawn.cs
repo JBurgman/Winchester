@@ -15,13 +15,15 @@ namespace ChessGameLibrary
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
+        public ChessColor PieceColor { get; set; }
 
-        public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType)
+        public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
             this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
+            this.PieceColor = pieceColor;
         }
 
 
@@ -29,20 +31,26 @@ namespace ChessGameLibrary
         public List<Position> GetValidMove()
         {
             ValidMove = new List<Position>();
-            if (PieceId > 15)// PieceColor.White
+            if (PieceColor==ChessColor.White)// PieceColor.White
             {
                 if (StartPosition == true)
                 {
+                    if(ChessPiecePosition.X==7)
                     ValidMove.Add(new Position(ChessPiecePosition.X-1, ChessPiecePosition.Y - 1));
+                    else if (ChessPiecePosition.X >= 0 && ChessPiecePosition.X < 7)
                     ValidMove.Add(new Position(ChessPiecePosition.X+1, ChessPiecePosition.Y - 1));
-                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 2));
+                    
+                    
                     ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y-1));
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 2));
                    
                 }
                 else if (StartPosition == false)
                 {
-                    ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y - 1));
-                    ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y - 1));
+                    if (ChessPiecePosition.X == 7)
+                        ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y - 1));
+                    else if (ChessPiecePosition.X >= 0 && ChessPiecePosition.X < 7)
+                        ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y - 1));
                     ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - 1));
                 }
                 
@@ -51,15 +59,20 @@ namespace ChessGameLibrary
             {
                 if (StartPosition == true)
                 {
+                    if (ChessPiecePosition.X ==7)
                     ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 1));
+                    else if (ChessPiecePosition.X >= 0 && ChessPiecePosition.X < 7)
                     ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
+                    
+                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1));
                     ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 2));
-                    ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1)); 
                     
                 }
                 else if (StartPosition == false)
                 {
+                    if (ChessPiecePosition.X == 7)
                     ValidMove.Add(new Position(ChessPiecePosition.X - 1, ChessPiecePosition.Y + 1));
+                    else if (ChessPiecePosition.X >= 0 && ChessPiecePosition.X < 7)
                     ValidMove.Add(new Position(ChessPiecePosition.X + 1, ChessPiecePosition.Y + 1));
                     ValidMove.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + 1));
                 }

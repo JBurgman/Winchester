@@ -16,13 +16,15 @@ namespace ChessGameLibrary
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
+        public ChessColor PieceColor { get; set; }
 
-        public Queen(Position chessPiecePosition, int pieceId, PieceType pieceType)
+        public Queen(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
             this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
+            this.PieceColor = pieceColor;
         }
 
 

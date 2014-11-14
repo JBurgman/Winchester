@@ -32,6 +32,7 @@ namespace ChessGameLibrary
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player OtherPlayer { get; set; }
+        public List<IChessPiece> CapturedPieces { get; set; }
 
 
         public ChessGame()
@@ -39,6 +40,8 @@ namespace ChessGameLibrary
             PlayerList = new List<Player>();
             player1 = new Player(ChessColor.White);
             player2 = new Player(ChessColor.Black);
+
+            CapturedPieces = new List<IChessPiece>();
 
             logger = new Logger();
             CurrentPlayer = player1;
@@ -56,7 +59,7 @@ namespace ChessGameLibrary
         {
             for (int i = 0; i < 8; i++)
             {
-                blacklist.Enqueue(i + 17);
+                blacklist.Enqueue(i + 1);
             }
         }
 
@@ -73,6 +76,7 @@ namespace ChessGameLibrary
         //
         public void CalculateNextMove() //on going - called from ConsoleApplication
         {
+            
             var id = 0;
             if (CurrentPlayer == player1)// White starts
             {
@@ -81,10 +85,11 @@ namespace ChessGameLibrary
 
                 if (whitelist.Count > 0)
                 {
+                    //id = whitelist.Peek();
                     id = whitelist.Dequeue();// return first piece in queue.
                     whitelist.Enqueue(id);
                     id = id - 1;
-                    
+
                 }
             }
             else // Black in turn
@@ -94,9 +99,10 @@ namespace ChessGameLibrary
                 // Get pieces that can move 
                 if (blacklist.Count > 0)
                 {
+                    //id = blacklist.Peek();
                     id = blacklist.Dequeue();// return first piece in queue.
                     blacklist.Enqueue(id);
-                    id = id - 17;
+                    id = id - 1;
                 }
 
             }
@@ -104,53 +110,80 @@ namespace ChessGameLibrary
             var chesspiece = CurrentPlayer.Pieces.ElementAt(id);
 
             var cantake = false;
-            
+
             // Get the next position from valid moves
-            var nextposition = chesspiece.GetValidMove().ElementAt(1);//TODO:Fix ValidMoves in Knight
+            var nextposition = chesspiece.GetValidMove().ElementAt(0);//Applies to Pawn
 
             //TODO:Check borders
-            if (nextposition.X >= 0 && nextposition.X < 8 && nextposition.Y >= 0 && nextposition.Y < 8)
-            {
+            //if (nextposition.X >= 0 && nextposition.X < 7 && nextposition.Y >= 0 && nextposition.Y < 7)
+            //{
 
 
 
 
 
-                //TODO: Check if there is any black or white pieces in next position, if not:
+                //TODO: Check if there is any black or white pieces in next position, if not: 
                 for (int i = 0; i < OtherPlayer.Pieces.Count; i++)
                 {
                     if ((OtherPlayer.Pieces[i].ChessPiecePosition.X == nextposition.X) && (OtherPlayer.Pieces[i].ChessPiecePosition.Y == nextposition.Y))
                     {
                         cantake = true;
-                        OtherPlayer.Pieces.RemoveAt(i);
+                        var capturedPiece = OtherPlayer.Pieces[i];
+
+                        CapturePiece(capturedPiece);
+                        //CapturedPieces.Add(capturedPiece);
+                        OtherPlayer.Pieces.Remove(capturedPiece);
+
+
                         //TODO:Remove from whitelist and blacklist
-
+                        //if (CurrentPlayer == player1)
+                        //{
+                        //    id = blacklist.Dequeue();
+                            
+                        //}
+                        //else
+                        //{
+                        //    id = whitelist.Dequeue();
+                        //}
                     }
-                }
-            }
 
-           
+                }
+            //}
+
+
             // Call MovePiece()
             //MovePiece(nextposition, chesspiece);
 
+
             //TODO:Check borders
+            //if (nextposition.X >= 0 && nextposition.X < 7 && nextposition.Y >= 0 && nextposition.Y < 7)
+            //{
+
+                // Get the next position from valid moves
+                if (!cantake)
+                {
+                    nextposition = chesspiece.GetValidMove().Last();//TODO:Fix ValidMoves in Pawn
+                    //if (CurrentPlayer == player1)
+                    //{
+                    //    id = whitelist.Dequeue();// return first piece in queue.
+                    //    whitelist.Enqueue(id);
+                    //}
+                    //else
+                    //{
+                    //     id = blacklist.Dequeue();// return first piece in queue.
+                    //     blacklist.Enqueue(id);
+                    //}
+                    
+                }
 
 
+            //}
+            //TODO:Check borders
+            //if (nextposition.X >= 0 && nextposition.X < 7 && nextposition.Y >= 0 && nextposition.Y < 7)
+            //{
+                chesspiece.ChessPiecePosition = nextposition;
+            //}
 
-            // Get the next position from valid moves
-            if (!cantake)
-            {
-                nextposition = chesspiece.GetValidMove().ElementAt(2);//TODO:Fix ValidMoves in Pawn
-                
-            }
-            
-
-
-
-
-            chesspiece.ChessPiecePosition = nextposition;
-
-           
 
             if (chesspiece.StartPosition)// If in startposition
             {
@@ -164,6 +197,13 @@ namespace ChessGameLibrary
 
 
             ChangePlayer();
+        }
+
+        private void CapturePiece(IChessPiece chessPiece)
+        {
+            CapturedPieces.Add(chessPiece);
+            //OtherPlayer.Pieces.Remove(chessPiece);
+           
         }
 
 
