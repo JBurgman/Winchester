@@ -66,8 +66,6 @@ namespace ChessGameConsoleApplication
             Console.WriteLine("─");
             Console.SetCursorPosition(8, 8);
             Console.WriteLine("┘");
-
-
             //Ranks (1-8)
             Console.SetCursorPosition(8, 0);
             Console.WriteLine("│8");

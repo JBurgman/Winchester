@@ -26,14 +26,16 @@ namespace ChessGameLibrary
         const int bottom = 8;
         const int left = 0;
         const int right = 8;
-
-
+       
+        
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player OtherPlayer { get; set; }
         public List<IChessPiece> CapturedPieces { get; set; }
 
+
+        public List<IChessPiece> TakenPieces { get; set; } 
 
         public ChessGame()
         {
@@ -55,17 +57,8 @@ namespace ChessGameLibrary
         }
 
         // Methods
-        private void InitializeBlackList() //Start with pawns...
-        {
-            for (int i = 0; i < 8; i++)
-            {
-                blacklist.Enqueue(i + 1);
-            }
-        }
 
-
-
-        public void InitializeChessPieceList() // Create chess pieces and store them in players lists. Done.
+        public void InitializeChessPieceList() //not done
         {
             foreach (var player in PlayerList)
             {
@@ -147,10 +140,10 @@ namespace ChessGameLibrary
                         //}
                     }
 
-                }
+        }
             //}
 
-
+        
             // Call MovePiece()
             //MovePiece(nextposition, chesspiece);
 
@@ -161,7 +154,7 @@ namespace ChessGameLibrary
 
                 // Get the next position from valid moves
                 if (!cantake)
-                {
+        {
                     nextposition = chesspiece.GetValidMove().Last();//TODO:Fix ValidMoves in Pawn
                     //if (CurrentPlayer == player1)
                     //{
@@ -197,7 +190,7 @@ namespace ChessGameLibrary
 
 
             ChangePlayer();
-        }
+            }
 
         private void CapturePiece(IChessPiece chessPiece)
         {
@@ -206,7 +199,7 @@ namespace ChessGameLibrary
            
         }
 
-
+      
 
 
 
@@ -226,10 +219,10 @@ namespace ChessGameLibrary
 
             for (int i = 1; i < 16; i++)
             {
-
+                
             }
 
-            return threatened;
+                return threatened;
         }
 
 
@@ -256,7 +249,7 @@ namespace ChessGameLibrary
         private void ChangePlayer() // Change player. Done.
         {
             if (CurrentPlayer.PlayerId == player1.PlayerId)
-            {
+        {
                 CurrentPlayer = player2;
                 OtherPlayer = player1;
             }

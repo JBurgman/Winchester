@@ -52,9 +52,6 @@ namespace ChessGameConsoleApplication
                
                 DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
 
-                DrawLogPost(new PrintLogs(), chessGame.LogPost);
-            }
-        }
 
         private void ChessPiecesSetUp()
         {
@@ -142,26 +139,22 @@ namespace ChessGameConsoleApplication
                     }
                 }
                 
-            
 
-        private void ChessPiecesSetUp()
-        {
-            foreach (var player in chessGame.PlayerList)
-            {
-                foreach (var chesspiece in player.Pieces)
+                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+
+               
+                DrawChessPiece(new PieceSymbol(new Position(4, 7),ConsoleColor.Yellow,"Q"));
+
+                if (position.Y<7)
                 {
-                    position = chesspiece.ChessPiecePosition;
+                    position.Y++;
+                }
+                
+                //-----------------------------------------------------------------------------------------
+                Console.ReadKey();
+                Console.Clear();
 
-                    Console.BackgroundColor = tiles.GetTileColor(position);
 
-                    if (chesspiece.PieceId <= 8)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-                    }
-                    else
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
-            }
             }
         }
         }
@@ -189,6 +182,11 @@ namespace ChessGameConsoleApplication
             this.chessGame.TakenPieces = takenPieces;
             takenPiece.Draw();
         }
+
+
+
+
+
 
     }
 }
