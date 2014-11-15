@@ -222,5 +222,12 @@ namespace ChessGameLibrary
 
             this.CurrentPlayer = player; 
         }
+
+        private void CapturePiece(IChessPiece chessPiece)
+        {
+            CapturedPieces.Add(chessPiece);
+            Opponent.Pieces.Remove(chessPiece);
+
+        }
     }
 }
