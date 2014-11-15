@@ -22,9 +22,9 @@ namespace ChessGameLibrary
 
         public Player(ChessColor playerId)
         {
-            
-            chessPieceFactory = new ChessPieceFactory(new List<IChessPiece>());
-            
+            Pieces = new List<IChessPiece>();
+            chessPieceFactory = new ChessPieceFactory(Pieces);
+
             this.PlayerId = playerId;
         }
 

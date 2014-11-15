@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    public class Pawn:IChessPiece
+    public class Pawn : IChessPiece
     {
         public bool StartPosition { get; set; }
         public Position ChessPiecePosition { get; set; }
@@ -78,7 +78,7 @@ namespace ChessGameLibrary
                 }
 
                 for (int i = 0; i < currentPlayer.Pieces.Count; i++)
-                {
+        {
                     if (Moves[0].X == currentPlayer.Pieces[i].ChessPiecePosition.X && Moves[0].Y == currentPlayer.Pieces[i].ChessPiecePosition.Y)
                         valid = false;
                 }
@@ -131,6 +131,10 @@ namespace ChessGameLibrary
 
 
             return ValidMove;
+        }
+        public override string ToString()
+        {
+            return String.Format("P");
         }
     }
 }

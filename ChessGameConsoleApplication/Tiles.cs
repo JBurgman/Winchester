@@ -25,7 +25,7 @@ namespace ChessGameConsoleApplication
 
         public void Draw()
         {
-
+            
             for (int i = 0; i < this.Width; i++)
             {
 
@@ -63,7 +63,6 @@ namespace ChessGameConsoleApplication
             else
             {
                 return ConsoleColor.Black;
-
             }
         }
     }

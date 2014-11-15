@@ -15,6 +15,7 @@ namespace ChessGameLibrary
         public Queen(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
+            this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
@@ -322,9 +323,9 @@ namespace ChessGameLibrary
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
-                {
+        {
                     if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
-                    {
+            {
                         valid = false;
                         break;
                     }

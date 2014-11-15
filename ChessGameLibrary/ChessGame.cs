@@ -19,10 +19,17 @@ namespace ChessGameLibrary
         Player player1;
         Player player2;
         public Logger log = new Logger();
+
+       
         
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
+        public Player OtherPlayer { get; set; }
+        public List<IChessPiece> CapturedPieces { get; set; }
+
+
+        //public List<IChessPiece> TakenPieces { get; set; } 
         public Player Opponent { get; set; }
         public List<IChessPiece> TakenPieces { get; set; }
 
@@ -33,6 +40,12 @@ namespace ChessGameLibrary
             player2 = new Player(ChessColor.Black);
             this.CurrentPlayer = player1;
             this.Opponent = player2;
+
+            CapturedPieces = new List<IChessPiece>();
+
+            logger = new Logger();
+            CurrentPlayer = player1;
+            OtherPlayer = player2;
 
             PlayerList.Add(player1);
             PlayerList.Add(player2);
@@ -50,6 +63,7 @@ namespace ChessGameLibrary
             }
         }
 
+        
         public void CalculateNextMove() //not done
         {
             Position nextPos = null;
@@ -62,9 +76,17 @@ namespace ChessGameLibrary
                 if (CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Count > 0)
                 {
                     availablePieces.Add(CurrentPlayer.Pieces[i]);
-                }
             }
 
+
+
+
+            //TODO:Put id back in the queue
+
+
+            ChangePlayer();
+        }
+        
             //Creates a list of threatened pieces
             List<IChessPiece> threathenedPieces = new List<IChessPiece>();
             for (int i = 0; i < availablePieces.Count; i++)
@@ -77,7 +99,7 @@ namespace ChessGameLibrary
             List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
 
             if (threathenedPieces.Count > 0)
-            {
+        {
                 for (int i = 0; i < threathenedPieces.Count; i++)    //Prioritise threathened pieces that can attack 
                 {
                     if (canAttack(threathenedPieces[i]) == true)
@@ -150,15 +172,15 @@ namespace ChessGameLibrary
                 for (int x = 0; x < Moves.Count; x++)
                 {
                     if (Moves[x] == Opponent.Pieces[i].ChessPiecePosition)
-                    {
+            {
                         flag = true;
                     }
                 }
             }
-
+                
             return flag;
-        }
-        
+            }
+
         bool CheckIfThreatened(int PieceId)
         {
             bool threatened = false;
@@ -168,14 +190,14 @@ namespace ChessGameLibrary
             { }
 
 
-            return threatened;
+                return threatened;
         }
 
 
         void MovePiece(Position nextPosition, IChessPiece chessPiece)
         {
            // l.Log(CurrentPlayer, chessPiece, chessPiece.ChessPiecePosition, nextPosition);
-            
+
             for (int i = 0; i < Opponent.Pieces.Count; i++)
             {
                 if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
@@ -202,6 +224,7 @@ namespace ChessGameLibrary
                 this.Opponent = player2;
             }
 
+            this.CurrentPlayer = player; 
         }
     }
 }

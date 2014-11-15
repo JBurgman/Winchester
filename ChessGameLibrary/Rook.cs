@@ -16,6 +16,7 @@ namespace ChessGameLibrary
         public Rook(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
+            this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
@@ -50,7 +51,7 @@ namespace ChessGameLibrary
             for (int i = 1; i < 8; i++)
             {
                 Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - i));
-            }
+        }
 
                 return Moves;
 
@@ -215,9 +216,9 @@ namespace ChessGameLibrary
 
                 //Checks square for players piece
                 for (int x2 = 0; x2 < currentPlayer.Pieces.Count; x2++)
-                {
+        {
                     if (Moves[i].X == currentPlayer.Pieces[x2].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x2].ChessPiecePosition.Y)
-                    {
+            {
                         valid = false;
                         lastMove = true;
                         break;
@@ -236,6 +237,7 @@ namespace ChessGameLibrary
                 if (lastMove == true) //Breaks after last valid move
                     break;
             }
+            return ValidMove;
 
             return ValidMove; //Returns list with valid moves
         }
