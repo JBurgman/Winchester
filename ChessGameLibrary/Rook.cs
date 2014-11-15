@@ -9,6 +9,7 @@ namespace ChessGameLibrary
     class Rook:IChessPiece
     {
         public Position ChessPiecePosition { get; set; }
+        public bool StartPosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
         public ChessColor PieceColor { get; set; }
@@ -237,7 +238,7 @@ namespace ChessGameLibrary
                 if (lastMove == true) //Breaks after last valid move
                     break;
             }
-            return ValidMove;
+           
 
             return ValidMove; //Returns list with valid moves
         }

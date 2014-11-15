@@ -18,20 +18,20 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
-        public Logger log = new Logger();
+        public Logger log;
 
        
         
         // Properties
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
-        public Player OtherPlayer { get; set; }
+       
         public List<IChessPiece> CapturedPieces { get; set; }
 
 
-        //public List<IChessPiece> TakenPieces { get; set; } 
+       
         public Player Opponent { get; set; }
-        public List<IChessPiece> TakenPieces { get; set; }
+       
 
         public ChessGame()
         {
@@ -43,9 +43,8 @@ namespace ChessGameLibrary
 
             CapturedPieces = new List<IChessPiece>();
 
-            logger = new Logger();
-            CurrentPlayer = player1;
-            OtherPlayer = player2;
+            log = new Logger();
+            
 
             PlayerList.Add(player1);
             PlayerList.Add(player2);
@@ -81,10 +80,7 @@ namespace ChessGameLibrary
 
 
 
-            //TODO:Put id back in the queue
-
-
-            ChangePlayer();
+           
         }
         
             //Creates a list of threatened pieces

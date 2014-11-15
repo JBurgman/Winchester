@@ -9,6 +9,7 @@ namespace ChessGameLibrary
     class Queen : IChessPiece
     {
         public Position ChessPiecePosition { get; set; }
+        public bool StartPosition { get; set; }
         public int PieceId { get; set; }
         public PieceType PieceType { get; set; }
         public ChessColor PieceColor { get; set; }

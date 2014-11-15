@@ -15,10 +15,9 @@ namespace ChessGameConsoleApplication
     {
         public ChessGame chessGame;
         private Tiles tiles;
-        //Player player1;
-        //Player player2;
+       
         Position position;
-        //private TakenPieces takenPieces;
+        
 
 
         
@@ -63,7 +62,7 @@ namespace ChessGameConsoleApplication
         }
 
 
-            }
+
 
 
         private void ChessPiecesSetUp()
@@ -73,103 +72,93 @@ namespace ChessGameConsoleApplication
                 foreach (var chesspiece in player.Pieces)
                 {
                     position = chesspiece.ChessPiecePosition;
-                    if (chesspiece.PieceColor==ChessColor.Black)
-                    {
-                        if(chesspiece.PieceType==PieceType.Pawn)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Rook)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
-        }
-                    else if (chesspiece.PieceType==PieceType.Knight)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Bishop)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Queen)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "Q"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.King)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "K"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Bishop)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Knight)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
-                    }
-                    else if (chesspiece.PieceType==PieceType.Rook)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
-                    }
-                }
-                    if (chesspiece.PieceColor==ChessColor.White)
+                    if (chesspiece.PieceColor == ChessColor.Black)
                     {
                         if (chesspiece.PieceType == PieceType.Pawn)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Rook)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Knight)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Bishop)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Queen)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "Q"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "Q"));
+                        }
                         else if (chesspiece.PieceType == PieceType.King)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "K"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "K"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Bishop)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "B"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Knight)
-                    {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
-                    }
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "S"));
+                        }
                         else if (chesspiece.PieceType == PieceType.Rook)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "R"));
+                        }
+                    }
+                    if (chesspiece.PieceColor == ChessColor.White)
                     {
-                        DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                        if (chesspiece.PieceType == PieceType.Pawn)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Rook)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Knight)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Bishop)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Queen)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "Q"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.King)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "K"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Bishop)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Knight)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                        }
+                        else if (chesspiece.PieceType == PieceType.Rook)
+                        {
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                        }
                     }
                 }
+            }
+        }
                 
 
                
 
 
-        //            Console.BackgroundColor = tiles.GetTileColor(position);
-
-        //            if (chesspiece.PieceId<=8)
-        //            {
-        //                DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
-        //            }
-        //            else
-        //            {
-        //                DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
-        //            }
-                    
-        //        }
-        //    }
-        //}
+        
 
         private void DrawChessPiece(PieceSymbol pieceSymbol)
         {
@@ -194,10 +183,7 @@ namespace ChessGameConsoleApplication
             takenPieces.Draw();
         }
 
-        void DrawFilesAndRanks(FilesRanks filesRanks)
-        {
-           filesRanks.Draw();
-        }
+        
 
         void DrawLogPost(PrintLogs printLog, List<string> logList)
         {
@@ -208,7 +194,7 @@ namespace ChessGameConsoleApplication
 
         void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
         {
-            this.chessGame.TakenPieces = takenPieces;
+           
             takenPiece.Draw();
         }
 
