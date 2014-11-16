@@ -84,7 +84,7 @@ namespace ChessGameConsoleApplication
             Console.SetCursorPosition(8, 7);
             Console.WriteLine("│1");
 
-
+            
         }
 
 

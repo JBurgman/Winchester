@@ -243,5 +243,10 @@ namespace ChessGameLibrary
             return ValidMove; //Returns list with valid moves
         }
 
+        public override string ToString()
+        {
+            return String.Format("R");
+        }
+
     }
 }

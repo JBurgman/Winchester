@@ -20,13 +20,11 @@ namespace ChessGameConsoleApplication
         public void Draw()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            //string s = "P, K, B, P, P, B, R";
-            //Console.SetCursorPosition(0,12);
-            //Console.WriteLine(s);
+            
 
             Console.SetCursorPosition(0,11);
             Console.WriteLine("Captured pieces: ");
-            Console.SetCursorPosition(0, 12);
+            //Console.SetCursorPosition(0, 12);
 
 
             foreach (IChessPiece piece in capturedPieces)
@@ -40,8 +38,9 @@ namespace ChessGameConsoleApplication
             
                 Console.Write(piece);
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            
         }
-
-        
     }
 }

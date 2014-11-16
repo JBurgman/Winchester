@@ -136,7 +136,7 @@ namespace ChessGameLibrary
                 movingPiece = availablePieces[mPiece];
             }
 
-                Console.WriteLine(CurrentPlayer.Pieces[10].GetValidMove(CurrentPlayer, Opponent).Count);
+                Console.WriteLine(CurrentPlayer.Pieces[0].GetValidMove(CurrentPlayer, Opponent).Count);
 
             if (nextPos == null || movingPiece == null)
             {
@@ -197,12 +197,16 @@ namespace ChessGameLibrary
             for (int i = 0; i < Opponent.Pieces.Count; i++)
             {
                 if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
-                    Opponent.Pieces.RemoveAt(i);
+                { 
+                    var capturedPiece = Opponent.Pieces[i];
+
+                        CapturePiece(capturedPiece);
+            }
             }
 
             //Moves piece to new position
             chessPiece.ChessPiecePosition = nextPosition;
-
+            
             
         }
 
@@ -220,7 +224,7 @@ namespace ChessGameLibrary
                 this.Opponent = player2;
             }
 
-            this.CurrentPlayer = player; 
+            //this.CurrentPlayer = player; 
         }
 
         private void CapturePiece(IChessPiece chessPiece)

@@ -13,58 +13,58 @@ namespace ChessGameConsoleApplication
     /// </summary>
     public class ChessBoard
     {
+        // Fields
         public ChessGame chessGame;
         private Tiles tiles;
        
-        Position position;
+        Position position;// Needed?/JE
         
-
-
-        
-       
+        // Properties
         public Position Position { get; set; }
        
         public int Length { get; private set; }
 
-       
+        /// <summary>
+        /// Method that initalize the UI and instantiate the game engine
+        /// </summary>
         public void Initialize()
         {
-            chessGame = new ChessGame();
+            chessGame = new ChessGame();//Instantiate the Game Engine, ChessGame
 
-            chessGame.InitializeChessPieceList();
-            tiles = new Tiles(new Position(0, 0), 8, 8);
+            chessGame.InitializeChessPieceList();//TODO:Move to ChessGame
 
-            
-            Start();
+            tiles = new Tiles(new Position(0, 0), 8, 8);//TODO:Position offset
+            Start();//Start the game
         }
 
-        
-
+        /// <summary>
+        /// Method holding the game loop.
+        /// </summary>
         public void Start()
         {
-
             while (true)
             {
-
-                DrawLogPost(new PrintLogs(), chessGame.log.LogList);
-
-                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
-
+                // Draw the chess board and set up the pieces
                 DrawChessBoard(tiles);
+                DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
                 ChessPiecesSetUp();
-                chessGame.CalculateNextMove();
+
                 
+                DrawLogPost(new PrintLogs(), chessGame.log.LogList); 
                 DrawTakenPieces(new TakenPieces(chessGame.CapturedPieces));
-                chessGame.CalculateNextMove();
-                Console.ReadKey();
+                
+
+                //Tell the game engine to move next
+                chessGame.CalculateNextMove();//TODO:Change to MoveNext()
+                
+                Console.ReadKey();//TODO:Time delay insted
                 Console.Clear();
             }
         }
 
-
-
-
-
+        /// <summary>
+        /// Method for setting up the chesspieces on the board
+        /// </summary>
         private void ChessPiecesSetUp()
         {
             foreach (var player in chessGame.PlayerList)
@@ -160,7 +160,7 @@ namespace ChessGameConsoleApplication
 
         
 
-        private void DrawChessPiece(PieceSymbol pieceSymbol)
+        void DrawChessPiece(PieceSymbol pieceSymbol)
         {
             pieceSymbol.Draw();
                
@@ -192,11 +192,7 @@ namespace ChessGameConsoleApplication
             printLog.Draw();
         }
 
-        void DrawTakenPieces(TakenPieces takenPiece, List<IChessPiece> takenPieces)
-        {
-           
-            takenPiece.Draw();
-        }
+       
 
 
 

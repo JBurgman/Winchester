@@ -8,10 +8,11 @@ namespace ChessGameLibrary
 {
     public class Logger
     {
-        public List<string> LogList = new List<string>();
+        public List<string> LogList;
 
         public void Log(Player currentPlayer, IChessPiece piece, Position currentPos, Position nextPos)
         {
+           
             //Player
             string player;
 
@@ -38,14 +39,9 @@ namespace ChessGameLibrary
 
         public Logger()
         {
+            LogList = new List<string>();
 
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
+            
 
         }
     }
