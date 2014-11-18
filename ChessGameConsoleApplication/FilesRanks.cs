@@ -31,21 +31,21 @@ namespace ChessGameConsoleApplication
             //Files (a-h)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 9);
-            Console.WriteLine("A");
+            Console.WriteLine("a");
             Console.SetCursorPosition(1, 9);
-            Console.WriteLine("B");
+            Console.WriteLine("b");
             Console.SetCursorPosition(2, 9);
-            Console.WriteLine("C");
+            Console.WriteLine("c");
             Console.SetCursorPosition(3, 9);
-            Console.WriteLine("D");
+            Console.WriteLine("d");
             Console.SetCursorPosition(4, 9);
-            Console.WriteLine("E");
+            Console.WriteLine("e");
             Console.SetCursorPosition(5, 9);
-            Console.WriteLine("F");
+            Console.WriteLine("f");
             Console.SetCursorPosition(6, 9);
-            Console.WriteLine("G");
+            Console.WriteLine("g");
             Console.SetCursorPosition(7, 9);
-            Console.WriteLine("H");
+            Console.WriteLine("h");
 
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(0, 8);

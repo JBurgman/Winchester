@@ -24,7 +24,7 @@ namespace ChessGameConsoleApplication
 
             Console.SetCursorPosition(0,11);
             Console.WriteLine("Captured pieces: ");
-            //Console.SetCursorPosition(0, 12);
+           
 
 
             foreach (IChessPiece piece in capturedPieces)
@@ -38,9 +38,9 @@ namespace ChessGameConsoleApplication
             
                 Console.Write(piece);
             }
-            Console.WriteLine();
-            Console.WriteLine();
-            
+            Console.SetCursorPosition(0, 16);
+            Console.ForegroundColor = ConsoleColor.Black;
+           
         }
     }
 }

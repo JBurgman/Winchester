@@ -56,7 +56,7 @@ namespace ChessGameConsoleApplication
 
                 //Tell the game engine to move next
                 chessGame.CalculateNextMove();//TODO:Change to MoveNext()
-                
+                Console.WriteLine();
                 Console.ReadKey();//TODO:Time delay insted
                 Console.Clear();
             }

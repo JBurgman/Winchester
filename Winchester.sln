@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winchester", "Winchester\Winchester.csproj", "{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGameConsoleApplication", "ChessGameConsoleApplication\ChessGameConsoleApplication.csproj", "{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGameLibrary", "ChessGameLibrary\ChessGameLibrary.csproj", "{847ED618-B5C6-4A7A-B712-38F01965610A}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{940BC62D-6E5F-4613-846F-B25A2D3AF8C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CE57BE6-4A4B-4490-B7DC-7A16F2C403BA}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -34,8 +34,13 @@ namespace ChessGameLibrary
             string nextY = char.ToString(numbers[nextPos.Y]);
 
             //Add move to log
-            LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            //LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            if(piece.PieceType==PieceType.Pawn)
+                LogList.Add(player + " moved:  " + currentX.ToLower() + currentY.ToLower() + nextX.ToLower() + nextY.ToLower()); 
+            else
+                LogList.Add(player + " moved: "+piece.ToString() + currentX.ToLower() + currentY.ToLower() + nextX.ToLower() + nextY.ToLower());
         }
+
 
         public Logger()
         {

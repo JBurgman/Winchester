@@ -12,7 +12,7 @@ namespace ChessGameConsoleApplication
     class PrintLogs : IChessBoardLayout
     {
 
-
+        
         private List<string> logPost {get; set; }
 
 
@@ -48,12 +48,11 @@ namespace ChessGameConsoleApplication
                 //    Console.WriteLine(logPost[(logPost.Count - y)]);
                 //}
 
-                 Console.ForegroundColor = ConsoleColor.White;
+                
                 foreach (var item in logPost)
                 {
-                   
-
-                    Console.SetCursorPosition(15, 1);
+                    Console.SetCursorPosition(0,15);
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(item);
                     
                 }
