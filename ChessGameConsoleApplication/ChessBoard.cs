@@ -116,39 +116,39 @@ namespace ChessGameConsoleApplication
                     {
                         if (chesspiece.PieceType == PieceType.Pawn)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "P"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "P"));
                         }
                         else if (chesspiece.PieceType == PieceType.Rook)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "R"));
                         }
                         else if (chesspiece.PieceType == PieceType.Knight)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "S"));
                         }
                         else if (chesspiece.PieceType == PieceType.Bishop)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "B"));
                         }
                         else if (chesspiece.PieceType == PieceType.Queen)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "Q"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "Q"));
                         }
                         else if (chesspiece.PieceType == PieceType.King)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "K"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "K"));
                         }
                         else if (chesspiece.PieceType == PieceType.Bishop)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "B"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "B"));
                         }
                         else if (chesspiece.PieceType == PieceType.Knight)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "S"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "S"));
                         }
                         else if (chesspiece.PieceType == PieceType.Rook)
                         {
-                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.White, "R"));
+                            DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "R"));
                         }
                     }
                 }

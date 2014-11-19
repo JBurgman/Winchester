@@ -31,7 +31,7 @@ namespace ChessGameConsoleApplication
             {
                 if (piece.PieceColor==ChessColor.White)
                 {
-                     Console.ForegroundColor = ConsoleColor.White;
+                     Console.ForegroundColor = ConsoleColor.Cyan;
                 }
                 else
                     Console.ForegroundColor = ConsoleColor.Yellow;
