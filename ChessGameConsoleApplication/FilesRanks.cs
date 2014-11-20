@@ -31,21 +31,21 @@ namespace ChessGameConsoleApplication
             //Files (a-h)
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(2, 11);
-            Console.WriteLine("a");
+            Console.WriteLine("A");
             Console.SetCursorPosition(3, 11);
-            Console.WriteLine("b");
+            Console.WriteLine("B");
             Console.SetCursorPosition(4, 11);
-            Console.WriteLine("c");
+            Console.WriteLine("C");
             Console.SetCursorPosition(5, 11);
-            Console.WriteLine("d");
+            Console.WriteLine("D");
             Console.SetCursorPosition(6, 11);
-            Console.WriteLine("e");
+            Console.WriteLine("E");
             Console.SetCursorPosition(7, 11);
-            Console.WriteLine("f");
+            Console.WriteLine("F");
             Console.SetCursorPosition(8, 11);
-            Console.WriteLine("g");
+            Console.WriteLine("G");
             Console.SetCursorPosition(9, 11);
-            Console.WriteLine("h");
+            Console.WriteLine("H");
 
             Console.ForegroundColor = TextColor;
             Console.SetCursorPosition(2, 10);
@@ -84,6 +84,47 @@ namespace ChessGameConsoleApplication
             Console.SetCursorPosition(10, 9);
             Console.WriteLine("│1");
 
+            //Ovanför
+            Console.ForegroundColor = TextColor;
+            Console.SetCursorPosition(2, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(3, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(4, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(5, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(6, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(7, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(8, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(9, 1);
+            Console.WriteLine("─");
+            Console.SetCursorPosition(10, 1);
+            Console.WriteLine("┐");
+
+            Console.SetCursorPosition(1, 1);
+            Console.WriteLine("┌");
+            Console.SetCursorPosition(1, 2);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 3);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 4);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 5);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 6);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 7);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 8);
+            Console.WriteLine("│");
+            Console.SetCursorPosition(1, 9);
+            Console.WriteLine("│");
+             Console.SetCursorPosition(1, 10);
+             Console.WriteLine("└");
             
         }
 
