@@ -9,10 +9,10 @@ namespace ChessGameLibrary
     class Knight : IChessPiece
     {
 
-        List<Position> Moves = new List<Position>();
 
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
+        public bool StartPosition { get; set; }
         public PieceType PieceType { get; set; }
         public ChessColor PieceColor { get; set; }
 
@@ -22,7 +22,7 @@ namespace ChessGameLibrary
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
-            this.Moves = GetMoves();
+            this.StartPosition = true;
         }
 
         //Possible moves for this piece
@@ -45,6 +45,7 @@ namespace ChessGameLibrary
         //Valid moves for this piece
         public List<Position> GetValidMove(Player currentPlayer, Player Opponent)
         {
+            List<Position> Moves = GetMoves();
             List<Position> ValidMove = new List<Position>();
 
             bool valid = true;

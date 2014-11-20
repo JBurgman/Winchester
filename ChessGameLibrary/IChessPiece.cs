@@ -10,6 +10,7 @@ namespace ChessGameLibrary
     {
         Position ChessPiecePosition { get; set; }
         int PieceId { get; set; }
+        bool StartPosition { get; set; }
         PieceType PieceType { get; set; }
         ChessColor PieceColor { get; set; }
 

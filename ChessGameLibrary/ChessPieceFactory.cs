@@ -16,6 +16,7 @@ namespace ChessGameLibrary
             this.pieces = pieces;
         }
 
+
         public List<IChessPiece> CreateChessPiece(ChessColor playerId)
         {
             if (playerId==ChessColor.Black)

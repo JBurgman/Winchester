@@ -10,6 +10,7 @@ namespace ChessGameLibrary
     {
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
+        public bool StartPosition { get; set; }
         public PieceType PieceType { get; set; }
         public ChessColor PieceColor { get; set; }
 
@@ -19,6 +20,7 @@ namespace ChessGameLibrary
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
+            this.StartPosition = true;
         }
 
 

@@ -10,11 +10,10 @@ namespace ChessGameLibrary
     {
         White,
         Black
-
     }
+
     public class ChessGame
     {
-
         //Fields
         Player player1;
         Player player2;
@@ -40,8 +39,6 @@ namespace ChessGameLibrary
 
         // Methods
 
-
-
         public void InitializeChessPieceList() // Create chess pieces and store them in players lists. Done.
         {
             foreach (var player in PlayerList)
@@ -54,6 +51,11 @@ namespace ChessGameLibrary
         {
             Position nextPos = null;
             IChessPiece movingPiece = null;
+
+            if(CheckIfChecked() == true)
+                Console.WriteLine("              CHECKED!!!!!!!");
+
+            
         
             //Creates a list of pieces that can move
             List<IChessPiece> availablePieces = new List<IChessPiece>();
@@ -69,14 +71,14 @@ namespace ChessGameLibrary
             List<IChessPiece> threathenedPieces = new List<IChessPiece>();
             for (int i = 0; i < availablePieces.Count; i++)
             {
-                if (CheckIfThreatened(availablePieces[i].PieceId) == true)
+                if (CheckIfThreatened(availablePieces[i].ChessPiecePosition) == true)
                     threathenedPieces.Add(CurrentPlayer.Pieces[i]);
             }
       
             //Creates list with the most prioritised pieces
             List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
 
-            if (threathenedPieces.Count > 0)
+            if (threathenedPieces.Count != 0)
             {
                 for (int i = 0; i < threathenedPieces.Count; i++)    //Prioritise threathened pieces that can attack 
                 {
@@ -89,59 +91,311 @@ namespace ChessGameLibrary
                 for (int i = 0; i < availablePieces.Count; i++)
                 {
                     if (canAttack(availablePieces[i]) == true)
-                    {
                         prioritisedPieces.Add(availablePieces[i]);
-                    }
                 }
             }
 
             //Calculate wich prioritised pice to move --------
+            
 
-
-
-            //------------------------------------------------
-
-
-            //Temporary--------
-            if (availablePieces.Count > 0)    //If no piece can attack
+            if(CheckIfChecked() == true) //If king is checked
             {
-                Random piece = new Random();
-                int mPiece = piece.Next(0, availablePieces.Count);
- 
+                List<IChessPiece> Blockers = new List<IChessPiece>();
+                List<IChessPiece> Attackers = new List<IChessPiece>();
 
-                Random move = new Random();
-                int randomMove = move.Next(0, availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count);
+                //Get king listPos ---------------------------------------------------
+                int king = 0;
+                for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
+                {
+                    if(CurrentPlayer.Pieces[i].PieceType == PieceType.King)
+                        king = i;
+                }
+                // -------------------------------------------------------------------
+
+                //Get threat ---------------------------------------------------------
+                IChessPiece threat = null;
+                int threatX = 0, threatY = 0;
+                for (int i = 0; i < Opponent.Pieces.Count; i++)
+                {
+                    for (int x = 0; x < Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer).Count; x++)
+                    {
+                        if (CurrentPlayer.Pieces[king].ChessPiecePosition.X == Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer)[x].X && CurrentPlayer.Pieces[king].ChessPiecePosition.Y == Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer)[x].Y)
+                        {
+                            threat = Opponent.Pieces[i];
+                            threatX = threat.ChessPiecePosition.X;
+                            threatY = threat.ChessPiecePosition.Y;
+                        }
+                    }
+                }
+                // -------------------------------------------------------------------
+
+                //Check if pieces can attack threat -> add to Attackers --------------
+                
+
+                for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
+                {
+                    for (int x = 0; x < CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                    {
+                        if (threat.ChessPiecePosition.X == CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent)[x].X && threat.ChessPiecePosition.Y == CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent)[x].Y)
+                        {
+                            int tempX = CurrentPlayer.Pieces[i].ChessPiecePosition.X;
+                            int tempY = CurrentPlayer.Pieces[i].ChessPiecePosition.Y;
 
 
-                nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
+                            MovePiece(threat.ChessPiecePosition, CurrentPlayer.Pieces[i]);
 
-                movingPiece = availablePieces[mPiece];
+                            if (CheckIfChecked() == true)
+                            {
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.X = tempX;
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.Y = tempY;
+                            }
+                            else
+                            {
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.X = tempX;
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.Y = tempY;
+                                Attackers.Add(CurrentPlayer.Pieces[i]);
+                            }
+
+                            threat.ChessPiecePosition.X = threatX;
+                            threat.ChessPiecePosition.Y = threatY;
+                            Opponent.Pieces.Add(threat);
+                        }
+                    }
+                }
+
+                // --------------------------------------------------------------------
+
+                //If no piece can attack -> Check if king can move --------------------
+                if (Attackers.Count == 0)
+                {
+                    //Check for safe square and set next random next pos
+                    for (int i = 0; i < CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent).Count; i++)
+                    {
+                        if (CheckIfThreatened(CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent)[i], CurrentPlayer.Pieces[king]) != true)
+                        {
+                            movingPiece = CurrentPlayer.Pieces[king];
+                            nextPos = CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent)[i];
+                        }
+                    }
+
+                    //Checks if can attack square and replace next pos
+                    for (int i = 0; i < Opponent.Pieces.Count; i++)
+                    {
+                        for (int x = 0; x < CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                        {
+                            if(CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent)[x].X == Opponent.Pieces[i].ChessPiecePosition.X && CurrentPlayer.Pieces[king].GetValidMove(CurrentPlayer, Opponent)[x].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
+                            {
+                                if (CheckIfThreatened(Opponent.Pieces[i].ChessPiecePosition) != true)
+                                    nextPos = Opponent.Pieces[i].ChessPiecePosition;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    // --------------------------------------------------------------------
+
+                    //Can block threat?
+                   
+                    for (int i = 0; i < CurrentPlayer.Pieces.Count; i++ )
+                    {
+                        for (int x = 0; x < CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                        {
+                            int tempX = CurrentPlayer.Pieces[i].ChessPiecePosition.X;
+                            int tempY = CurrentPlayer.Pieces[i].ChessPiecePosition.Y;
+
+                            MovePiece(CurrentPlayer.Pieces[i].GetValidMove(CurrentPlayer, Opponent)[x], CurrentPlayer.Pieces[i], true);
+
+                            if (CheckIfChecked() != true)
+                            {
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.X = tempX;
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.Y = tempY;
+                                Blockers.Add(CurrentPlayer.Pieces[i]);
+                            }
+                            else
+                            {
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.X = tempX;
+                                CurrentPlayer.Pieces[i].ChessPiecePosition.Y = tempY;
+                            }
+                        }
+
+                    }
+                }
+
+                
+                if (Attackers.Count != 0) //Attack threat
+                {
+                    movingPiece = Attackers[0];
+                    nextPos = threat.ChessPiecePosition;
+                }
+                else if(Blockers.Count != 0) //Block threat - Selects the blocker with least value
+                {
+                    int blocker = 0;
+
+                    for (int i = 0; i < Attackers.Count; i++)
+                    {
+                        if (Blockers[i].PieceType < Blockers[blocker].PieceType)
+                        {
+                            blocker = i;
+                        }
+                    }
+
+
+                    for (int x = 0; x < Blockers[blocker].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                    {
+                        int tempX = Blockers[blocker].ChessPiecePosition.X;
+                        int tempY = Blockers[blocker].ChessPiecePosition.Y;
+
+
+                        MovePiece(Blockers[blocker].GetValidMove(CurrentPlayer, Opponent)[x], Blockers[blocker], true);
+
+                        if (CheckIfChecked() != true)
+                        {
+                            Blockers[blocker].ChessPiecePosition.X = tempX;
+                            Blockers[blocker].ChessPiecePosition.Y = tempY;
+                            nextPos = Blockers[blocker].GetValidMove(CurrentPlayer, Opponent)[x];
+                        }
+                        else
+                        {
+                            Blockers[blocker].ChessPiecePosition.X = tempX;
+                            Blockers[blocker].ChessPiecePosition.Y = tempY;
+                        }
+                    }
+
+                    movingPiece = Blockers[blocker];
+                }
+                else
+                {
+                    //Game Over :(
+                }
+
+
             }
-
-                Console.WriteLine(CurrentPlayer.Pieces[10].GetValidMove(CurrentPlayer, Opponent).Count);
-
-            if (nextPos == null || movingPiece == null)
+            else if (prioritisedPieces.Count != 0) //If there is prioritised pieces
             {
-                //Player cant move -> end game?
-                Console.WriteLine("Cant move!");
+                IChessPiece target = Opponent.Pieces[0]; //Temp target
+                for (int i = 0; i < prioritisedPieces.Count; i++)
+                {
+                    for (int x = 0; x < prioritisedPieces[i].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                    {
+                        for (int n = 0; n < Opponent.Pieces.Count; n++)
+                        {
+                            if (prioritisedPieces[i].GetValidMove(CurrentPlayer, Opponent)[x].X == Opponent.Pieces[n].ChessPiecePosition.X && prioritisedPieces[i].GetValidMove(CurrentPlayer, Opponent)[x].Y == Opponent.Pieces[n].ChessPiecePosition.Y)
+                            {
+                                if (Opponent.Pieces[n].PieceType.CompareTo(target.PieceType) >= 0)
+                                {
+                                    target = Opponent.Pieces[n];
+                                    movingPiece = prioritisedPieces[i];
+                                    nextPos = target.ChessPiecePosition;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            else if (availablePieces.Count == 0)
+            {
+                Console.WriteLine("Game Over!"); // TODO
             }
             else
             {
-                log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
-                MovePiece(nextPos, movingPiece);
+           
+                Console.ReadKey();
+                Console.WriteLine(availablePieces.Count);
+                int mPiece = 0;
+                int randomMove = 0;
+
+                if (availablePieces.Count > 1)
+                {
+                re:
+                    Random piece = new Random();
+                    mPiece = piece.Next(0, availablePieces.Count-1);
+
+                    if (availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count > 1)
+                    {
+                        Random move = new Random();
+                        randomMove = move.Next(0, availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count-1);
+                    }
+                    
+
+
+                    //Check if valid
+                    int tempX = availablePieces[mPiece].ChessPiecePosition.X;
+                    int tempY = availablePieces[mPiece].ChessPiecePosition.Y;
+
+                    MovePiece(availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove], availablePieces[mPiece], true);
+
+                    if (CheckIfChecked() == true)
+                    {
+                        availablePieces[mPiece].ChessPiecePosition.X = tempX;
+                        availablePieces[mPiece].ChessPiecePosition.Y = tempY;
+                        goto re;
+                    }
+                    else
+                    {
+                        availablePieces[mPiece].ChessPiecePosition.X = tempX;
+                        availablePieces[mPiece].ChessPiecePosition.Y = tempY;
+                    }
+
+                    Console.WriteLine(availablePieces[mPiece].PieceType + "" + randomMove);
+                    nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
+                    movingPiece = availablePieces[mPiece];
+                }
+                else //If king
+                {
+                    //Check for safe square and set next random next pos
+                    for (int i = 0; i < availablePieces[0].GetValidMove(CurrentPlayer, Opponent).Count; i++)
+                    {
+                        if (CheckIfThreatened(availablePieces[0].GetValidMove(CurrentPlayer, Opponent)[i], availablePieces[0]) != true)
+                        {
+                            movingPiece = availablePieces[0];
+                            nextPos = availablePieces[0].GetValidMove(CurrentPlayer, Opponent)[i];
+                        }
+                    }
+
+                    //Checks if can attack square and replace next pos
+                    for (int i = 0; i < Opponent.Pieces.Count; i++)
+                    {
+                        for (int x = 0; x < availablePieces[0].GetValidMove(CurrentPlayer, Opponent).Count; x++)
+                        {
+                            if (availablePieces[0].GetValidMove(CurrentPlayer, Opponent)[x].X == Opponent.Pieces[i].ChessPiecePosition.X && availablePieces[0].GetValidMove(CurrentPlayer, Opponent)[x].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
+                            {
+                                if (CheckIfThreatened(Opponent.Pieces[i].ChessPiecePosition) != true)
+                                    nextPos = Opponent.Pieces[i].ChessPiecePosition;
+                            }
+                        }
+                    }
+                }
+                
             }
-            
+
+
+                if (nextPos == null || movingPiece == null)
+                {
+                    //Player cant move -> end game?
+                    Console.WriteLine("Cant move!");
+                }
+                else
+                {
+                    log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
+                    MovePiece(nextPos, movingPiece);
+                }
+
+                
+           
+
+
             //Temporary ^^^^
 
 
             ChangePlayer(CurrentPlayer); //Switch opponent and currentplayer
         }
 
+        // Check if piece can attack ----------------------------------------------------
         bool canAttack(IChessPiece piece)
         {
             bool flag = false;
-
-
 
             List<Position> Moves = piece.GetValidMove(CurrentPlayer, Opponent);
 
@@ -149,7 +403,7 @@ namespace ChessGameLibrary
             {
                 for (int x = 0; x < Moves.Count; x++)
                 {
-                    if (Moves[x] == Opponent.Pieces[i].ChessPiecePosition)
+                    if (Moves[x].X == Opponent.Pieces[i].ChessPiecePosition.X && Moves[x].Y == Opponent.Pieces[i].ChessPiecePosition.Y)
                     {
                         flag = true;
                     }
@@ -159,36 +413,112 @@ namespace ChessGameLibrary
             return flag;
         }
         
-        bool CheckIfThreatened(int PieceId)
+        // Check if thretened ---------------------------------------------------------
+        bool CheckIfThreatened(Position pos, IChessPiece piece = null)
         {
             bool threatened = false;
+            Position tempPos = null;
+
+            //Set temporary pos
+            if (piece != null)
+            {
+                tempPos = piece.ChessPiecePosition;
+                piece.ChessPiecePosition = pos;
+            }
+                
 
             //Loops through opponents pieces
-            for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
-            { }
+            for (int i = 0; i < Opponent.Pieces.Count; i++)
+            {
 
+                //If Pawn
+                if (Opponent.Pieces[i].PieceType == PieceType.Pawn)
+                {
+                    if (CurrentPlayer.PlayerId == ChessColor.White)
+                    {
+                        if ((pos.X == Opponent.Pieces[i].ChessPiecePosition.X - 1 && pos.Y == Opponent.Pieces[i].ChessPiecePosition.Y + 1) || (pos.X == Opponent.Pieces[i].ChessPiecePosition.X + 1 && pos.Y == Opponent.Pieces[i].ChessPiecePosition.Y + 1))
+                        {
+                            threatened = true;
+                        }
+                    }
+                    else
+                    {
+                        if ((pos.X == Opponent.Pieces[i].ChessPiecePosition.X - 1 && pos.Y == Opponent.Pieces[i].ChessPiecePosition.Y - 1) || (pos.X == Opponent.Pieces[i].ChessPiecePosition.X + 1 && pos.Y == Opponent.Pieces[i].ChessPiecePosition.Y - 1))
+                        {
+                            threatened = true;
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    for (int x = 0; x < Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer).Count; x++)
+                    {
+                        if (pos.X == Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer)[x].X && pos.Y == Opponent.Pieces[i].GetValidMove(Opponent, CurrentPlayer)[x].Y)
+                            threatened = true;
+                    }
+                }
+            }
+
+            if (piece != null)
+                piece.ChessPiecePosition = tempPos;
 
             return threatened;
         }
 
-
-        void MovePiece(Position nextPosition, IChessPiece chessPiece)
+        // Check if checked ---------------------------------------------------------
+        bool CheckIfChecked()
         {
-           // l.Log(CurrentPlayer, chessPiece, chessPiece.ChessPiecePosition, nextPosition);
-            
-            for (int i = 0; i < Opponent.Pieces.Count; i++)
+            bool flag = false;
+
+            for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
             {
-                if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
-                    Opponent.Pieces.RemoveAt(i);
+                if (CurrentPlayer.Pieces[i].PieceType == PieceType.King)
+                {
+                    if (CheckIfThreatened(CurrentPlayer.Pieces[i].ChessPiecePosition) == true)
+                        flag = true;
+                }
+            }
+                return flag;
+        }
+
+        // Move piece -----------------------------------------------------------------
+        void MovePiece(Position nextPosition, IChessPiece chessPiece, bool temp = false)
+        {
+
+            //Startposition
+            if (chessPiece.StartPosition == true)
+                chessPiece.StartPosition = false;
+
+            //Remove possible attacked piece if final move is done
+            if (temp != true)
+            {
+                for (int i = 0; i < Opponent.Pieces.Count; i++)
+                {
+                    if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
+                        Opponent.Pieces.RemoveAt(i);
+                }
+            }
+            
+
+            //Promote -- Temp - (ID?)
+            if (chessPiece.PieceType == PieceType.Pawn && (nextPosition.Y == 0 || nextPosition.Y == 7))
+            {
+                for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
+                {
+                    if (CurrentPlayer.Pieces[i] == chessPiece)
+                        CurrentPlayer.Pieces.RemoveAt(i);
+                }
+
+                CurrentPlayer.Pieces.Add(new Queen(new Position(nextPosition.X, nextPosition.Y), 12, PieceType.Queen, chessPiece.PieceColor));
             }
 
             //Moves piece to new position
-            chessPiece.ChessPiecePosition = nextPosition;
-
-            
+            chessPiece.ChessPiecePosition.X = nextPosition.X;
+            chessPiece.ChessPiecePosition.Y = nextPosition.Y;
         }
 
-
+        // Changeplayer -------------------------------------------------------------------
         void ChangePlayer(Player player)
         {
             if (player.PlayerId == ChessColor.White)
@@ -198,10 +528,9 @@ namespace ChessGameLibrary
             }
             else
             {
-                this.CurrentPlayer = player1; 
+                this.CurrentPlayer = player1;
                 this.Opponent = player2;
             }
-
         }
     }
 }

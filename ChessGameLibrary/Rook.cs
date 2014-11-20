@@ -10,6 +10,7 @@ namespace ChessGameLibrary
     {
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
+        public bool StartPosition { get; set; }
         public PieceType PieceType { get; set; }
         public ChessColor PieceColor { get; set; }
 
@@ -19,6 +20,7 @@ namespace ChessGameLibrary
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
+            this.StartPosition = true;
         }
 
 
@@ -31,25 +33,25 @@ namespace ChessGameLibrary
             //Move Left
             for (int i = 1; i < 8; i++)
             {
-                Moves.Add(new Position(ChessPiecePosition.X - i, ChessPiecePosition.Y));
+                Moves.Add(new Position(this.ChessPiecePosition.X - i, this.ChessPiecePosition.Y));
             }
 
             //Move Right
             for (int i = 1; i < 8; i++)
             {
-                Moves.Add(new Position(ChessPiecePosition.X + i, ChessPiecePosition.Y));
+                Moves.Add(new Position(this.ChessPiecePosition.X + i, this.ChessPiecePosition.Y));
             }
 
             //Move Down
             for (int i = 1; i < 8; i++)
             {
-                Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y + i));
+                Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y + i));
             }
 
             //Move Up
             for (int i = 1; i < 8; i++)
             {
-                Moves.Add(new Position(ChessPiecePosition.X, ChessPiecePosition.Y - i));
+                Moves.Add(new Position(this.ChessPiecePosition.X, this.ChessPiecePosition.Y - i));
             }
 
                 return Moves;
@@ -71,7 +73,7 @@ namespace ChessGameLibrary
             bool valid = true;
             bool lastMove = false;
 
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 valid = true;
                 lastMove = false;
@@ -87,9 +89,9 @@ namespace ChessGameLibrary
                 }
 
                 //Checks square for players piece
-                for (int x2 = 0; x2 < currentPlayer.Pieces.Count; x2++)
+                for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i].X == currentPlayer.Pieces[x2].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x2].ChessPiecePosition.Y)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
                     {
                         valid = false;
                         lastMove = true;
@@ -113,7 +115,7 @@ namespace ChessGameLibrary
 
             //Right ----------------------------------------
 
-            for (int i = 7; i > 14; i++)
+            for (int i = 7; i < 14; i++)
             {
                 valid = true;
                 lastMove = false;
@@ -129,9 +131,9 @@ namespace ChessGameLibrary
                 }
 
                 //Checks square for players piece
-                for (int x2 = 0; x2 < currentPlayer.Pieces.Count; x2++)
+                for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i].X == currentPlayer.Pieces[x2].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x2].ChessPiecePosition.Y)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
                     {
                         valid = false;
                         lastMove = true;
@@ -172,9 +174,9 @@ namespace ChessGameLibrary
                 }
 
                 //Checks square for players piece
-                for (int x2 = 0; x2 < currentPlayer.Pieces.Count; x2++)
+                for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i].X == currentPlayer.Pieces[x2].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x2].ChessPiecePosition.Y)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
                     {
                         valid = false;
                         lastMove = true;
@@ -214,9 +216,9 @@ namespace ChessGameLibrary
                 }
 
                 //Checks square for players piece
-                for (int x2 = 0; x2 < currentPlayer.Pieces.Count; x2++)
+                for (int x = 0; x < currentPlayer.Pieces.Count; x++)
                 {
-                    if (Moves[i].X == currentPlayer.Pieces[x2].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x2].ChessPiecePosition.Y)
+                    if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
                     {
                         valid = false;
                         lastMove = true;
