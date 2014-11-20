@@ -72,6 +72,8 @@ namespace ChessGameConsoleApplication
             {
                 foreach (var chesspiece in player.Pieces)
                 {
+                    Console.BackgroundColor = tiles.GetTileColor(position);
+
                     position = chesspiece.ChessPiecePosition;
                     if (chesspiece.PieceColor == ChessColor.Black)
                     {
