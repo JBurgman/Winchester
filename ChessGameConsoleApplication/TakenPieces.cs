@@ -22,7 +22,7 @@ namespace ChessGameConsoleApplication
             Console.ForegroundColor = ConsoleColor.White;
             
 
-            Console.SetCursorPosition(0,13);
+            Console.SetCursorPosition(0,15);
             Console.WriteLine("Captured pieces: ");
            
 

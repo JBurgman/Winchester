@@ -51,7 +51,7 @@ namespace ChessGameConsoleApplication
                 
                 foreach (var item in logPost)
                 {
-                    Console.SetCursorPosition(0,17);
+                    Console.SetCursorPosition(20,3);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(item);
                     
