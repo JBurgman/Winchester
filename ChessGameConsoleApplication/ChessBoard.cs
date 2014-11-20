@@ -25,7 +25,7 @@ namespace ChessGameConsoleApplication
         public int Length { get; private set; }
 
         /// <summary>
-        /// Method that initalize the UI and instantiate the game engine
+        /// Method that initalize the UI and instantiate the game engine          
         /// </summary>
         public void Initialize()
         {
@@ -72,6 +72,8 @@ namespace ChessGameConsoleApplication
             {
                 foreach (var chesspiece in player.Pieces)
                 {
+                   
+
                     position = chesspiece.ChessPiecePosition;
                     if (chesspiece.PieceColor == ChessColor.Black)
                     {
