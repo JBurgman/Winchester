@@ -39,23 +39,26 @@ namespace ChessGameConsoleApplication
         public void Draw()
         {
 
-           
-                
 
-                //for (int y = 1; y < 6; y++)
+
+
+            for (int y = 1; y < 6; y++)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(15, y);
+                Console.WriteLine(logPost[(logPost.Count - y)]);
+            }
+
+                
+                //foreach (var item in logPost)
                 //{
-                //    Console.SetCursorPosition(15, y);
-                //    Console.WriteLine(logPost[(logPost.Count - y)]);
-                //}
-
-                
-                foreach (var item in logPost)
-                {
-                    Console.SetCursorPosition(20,3);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(item);
                     
-                }
+                //        Console.SetCursorPosition(20, 3);
+                //        Console.ForegroundColor = ConsoleColor.White;
+                //        Console.WriteLine(item);
+                 
+                    
+                //}
                 
                
                    
