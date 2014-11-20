@@ -20,6 +20,7 @@ namespace ChessGameLibrary
         public Logger log = new Logger();
         
         // Properties
+        public bool GameOver = false;
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
         public Player Opponent { get; set; }
@@ -51,11 +52,6 @@ namespace ChessGameLibrary
         {
             Position nextPos = null;
             IChessPiece movingPiece = null;
-
-            if(CheckIfChecked() == true)
-                Console.WriteLine("              CHECKED!!!!!!!");
-
-            
         
             //Creates a list of pieces that can move
             List<IChessPiece> availablePieces = new List<IChessPiece>();
@@ -222,23 +218,24 @@ namespace ChessGameLibrary
                     }
                 }
 
+                Console.WriteLine(Blockers.Count);
                 
                 if (Attackers.Count != 0) //Attack threat
                 {
                     movingPiece = Attackers[0];
                     nextPos = threat.ChessPiecePosition;
                 }
-                else if(Blockers.Count != 0) //Block threat - Selects the blocker with least value
+                else if(Blockers.Count != 0) //Block threat - Selects the blocker with least value // DOES IT WORK?
                 {
                     int blocker = 0;
 
-                    for (int i = 0; i < Attackers.Count; i++)
-                    {
-                        if (Blockers[i].PieceType < Blockers[blocker].PieceType)
-                        {
-                            blocker = i;
-                        }
-                    }
+                    //for (int i = 0; i < Attackers.Count; i++)
+                    //{
+                    //    if (Blockers[i].PieceType < Blockers[blocker].PieceType)
+                    //    {
+                    //        blocker = i;
+                    //    }
+                    //}
 
 
                     for (int x = 0; x < Blockers[blocker].GetValidMove(CurrentPlayer, Opponent).Count; x++)
@@ -266,7 +263,7 @@ namespace ChessGameLibrary
                 }
                 else
                 {
-                    //Game Over :(
+                    goto end; //Game over
                 }
 
 
@@ -296,13 +293,11 @@ namespace ChessGameLibrary
             }
             else if (availablePieces.Count == 0)
             {
-                Console.WriteLine("Game Over!"); // TODO
+                goto end;
             }
             else
             {
-           
-                Console.ReadKey();
-                Console.WriteLine(availablePieces.Count);
+   
                 int mPiece = 0;
                 int randomMove = 0;
 
@@ -310,15 +305,18 @@ namespace ChessGameLibrary
                 {
                 re:
                     Random piece = new Random();
-                    mPiece = piece.Next(0, availablePieces.Count-1);
+                    mPiece = piece.Next(0, availablePieces.Count);
+
+                    if (availablePieces[mPiece].PieceType == PieceType.King)
+                        goto re;
 
                     if (availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count > 1)
                     {
                         Random move = new Random();
-                        randomMove = move.Next(0, availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count-1);
+                        randomMove = move.Next(0, availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count - 1);
                     }
-                    
 
+                    
 
                     //Check if valid
                     int tempX = availablePieces[mPiece].ChessPiecePosition.X;
@@ -338,7 +336,7 @@ namespace ChessGameLibrary
                         availablePieces[mPiece].ChessPiecePosition.Y = tempY;
                     }
 
-                    Console.WriteLine(availablePieces[mPiece].PieceType + "" + randomMove);
+          
                     nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
                     movingPiece = availablePieces[mPiece];
                 }
@@ -370,11 +368,10 @@ namespace ChessGameLibrary
                 
             }
 
-
+        end:
                 if (nextPos == null || movingPiece == null)
                 {
-                    //Player cant move -> end game?
-                    Console.WriteLine("Cant move!");
+                    GameOver = true;
                 }
                 else
                 {
@@ -498,19 +495,20 @@ namespace ChessGameLibrary
                     if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
                         Opponent.Pieces.RemoveAt(i);
                 }
-            }
-            
 
-            //Promote -- Temp - (ID?)
-            if (chessPiece.PieceType == PieceType.Pawn && (nextPosition.Y == 0 || nextPosition.Y == 7))
-            {
-                for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
+
+
+                //Promote -- Temp - (ID?)
+                if (chessPiece.PieceType == PieceType.Pawn && (nextPosition.Y == 0 || nextPosition.Y == 7))
                 {
-                    if (CurrentPlayer.Pieces[i] == chessPiece)
-                        CurrentPlayer.Pieces.RemoveAt(i);
-                }
+                    for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
+                    {
+                        if (CurrentPlayer.Pieces[i] == chessPiece)
+                            CurrentPlayer.Pieces.RemoveAt(i);
+                    }
 
-                CurrentPlayer.Pieces.Add(new Queen(new Position(nextPosition.X, nextPosition.Y), 12, PieceType.Queen, chessPiece.PieceColor));
+                    CurrentPlayer.Pieces.Add(new Queen(new Position(nextPosition.X, nextPosition.Y), 12, PieceType.Queen, chessPiece.PieceColor));
+                }
             }
 
             //Moves piece to new position

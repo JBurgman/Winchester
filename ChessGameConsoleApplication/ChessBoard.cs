@@ -41,7 +41,7 @@ namespace ChessGameConsoleApplication
         public void Start()
         {
 
-            while (true)
+            while (chessGame.GameOver != true)
             {
                 DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
 
@@ -50,12 +50,24 @@ namespace ChessGameConsoleApplication
                 DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
 
                 DrawChessBoard(tiles);
-                ChessPiecesSetUp();
+                ChessPiecesSetUp();        
                 chessGame.CalculateNextMove();
 
                 Console.ReadKey();
                 Console.Clear();
             }
+
+            DrawTakenPieces(new TakenPieces(), new List<IChessPiece>());
+
+            DrawLogPost(new PrintLogs(), chessGame.log.LogList);
+
+            DrawFilesAndRanks(new FilesRanks(ConsoleColor.White));
+
+            DrawChessBoard(tiles);
+            ChessPiecesSetUp();
+
+            System.Threading.Thread.Sleep(10000);
+            Console.ReadLine();
         }
 
         private void ChessPiecesSetUp()
