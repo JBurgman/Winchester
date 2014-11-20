@@ -45,9 +45,14 @@ namespace ChessGameLibrary
         public Logger()
         {
             LogList = new List<string>();
-
-            
-
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
         }
     }
 }
