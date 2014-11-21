@@ -25,7 +25,7 @@ namespace ChessGameConsoleApplication
         public int Length { get; private set; }
 
         /// <summary>
-        /// Method that initalize the UI and instantiate the game engine
+        /// Method that initalize the UI and instantiate the game engine          
         /// </summary>
         public void Initialize()
         {
@@ -41,6 +41,7 @@ namespace ChessGameConsoleApplication
         /// </summary>
         public void Start()
         {
+
             while (true)
             {
                 // Draw the chess board and set up the pieces
@@ -70,9 +71,13 @@ namespace ChessGameConsoleApplication
             {
                 foreach (var chesspiece in player.Pieces)
                 {
+                   
+            
+
                     position = chesspiece.ChessPiecePosition;
                     if (chesspiece.PieceColor == ChessColor.Black)
                     {
+                        Console.BackgroundColor = tiles.GetTileColor(position);
                         if (chesspiece.PieceType == PieceType.Pawn)
                         {
                             DrawChessPiece(new PieceSymbol(position, ConsoleColor.Yellow, "P"));
@@ -112,6 +117,9 @@ namespace ChessGameConsoleApplication
                     }
                     if (chesspiece.PieceColor == ChessColor.White)
                     {
+                        Console.BackgroundColor = tiles.GetTileColor(position);
+
+
                         if (chesspiece.PieceType == PieceType.Pawn)
                         {
                             DrawChessPiece(new PieceSymbol(position, ConsoleColor.Cyan, "P"));

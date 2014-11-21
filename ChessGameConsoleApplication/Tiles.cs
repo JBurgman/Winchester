@@ -25,7 +25,7 @@ namespace ChessGameConsoleApplication
 
         public void Draw()
         {
-            
+
             for (int i = 0; i < this.Width; i++)
             {
 
@@ -50,9 +50,27 @@ namespace ChessGameConsoleApplication
                     Console.Write("█");
                 }
                 Console.WriteLine();
+
+
             }
         }
 
-       
+        public ConsoleColor GetTileColor(Position pos)
+        {
+            if (((pos.X % 2 == 0) && (pos.Y % 2 == 0)) || ((pos.X % 2 == 1) && (pos.Y % 2 == 1)))
+            // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+            {
+                return ConsoleColor.DarkGray;
+            }
+            else
+            {
+                return ConsoleColor.Black;
+            }
+        }
+
     }
 }
+
+
+
+
