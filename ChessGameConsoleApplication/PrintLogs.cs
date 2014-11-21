@@ -44,6 +44,7 @@ namespace ChessGameConsoleApplication
 
             for (int y = 1; y < 6; y++)
             {
+                Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(20, y);
                 Console.WriteLine(logPost[(logPost.Count - y)]);

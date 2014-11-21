@@ -20,7 +20,7 @@ namespace ChessGameConsoleApplication
         public void Draw()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            
+            Console.BackgroundColor = ConsoleColor.Black;
 
             Console.SetCursorPosition(0,15);
             Console.WriteLine("Captured pieces: ");
@@ -32,14 +32,18 @@ namespace ChessGameConsoleApplication
                 if (piece.PieceColor==ChessColor.White)
                 {
                      Console.ForegroundColor = ConsoleColor.Cyan;
+                     Console.BackgroundColor = ConsoleColor.Black;
                 }
                 else
+                { 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-            
+                    Console.BackgroundColor = ConsoleColor.Black;
+            }
                 Console.Write(piece);
             }
             Console.SetCursorPosition(0, 18);
             Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Black;
            
         }
     }
