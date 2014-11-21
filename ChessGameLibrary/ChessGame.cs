@@ -48,6 +48,8 @@ namespace ChessGameLibrary
 
             PlayerList.Add(player1);
             PlayerList.Add(player2);
+
+            InitializeChessPieceList();
         }
 
         // Methods

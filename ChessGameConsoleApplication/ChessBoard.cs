@@ -31,9 +31,7 @@ namespace ChessGameConsoleApplication
         {
             chessGame = new ChessGame();//Instantiate the Game Engine, ChessGame
 
-            chessGame.InitializeChessPieceList();//TODO:Move to ChessGame
-
-            tiles = new Tiles(new Position(2, 2), 8, 8);//TODO:Position offset
+            tiles = new Tiles(new Position(2, 2), 8, 8);//
 
             Start();//Start the game
         }
