@@ -65,7 +65,7 @@ namespace ChessGameLibrary
         }
 
         
-        public void CalculateNextMove() //not done
+        public void MoveNext() //not done
         {
             Position nextPos = null;
             IChessPiece movingPiece = null;
