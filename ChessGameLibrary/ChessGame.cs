@@ -17,14 +17,21 @@ namespace ChessGameLibrary
         //Fields
         Player player1;
         Player player2;
-        public Logger log = new Logger();
+        public Logger log;
+        
+       
         
         // Properties
         public bool GameOver = false;
         public List<Player> PlayerList { get; set; }
         public Player CurrentPlayer { get; set; }
+       
+        public List<IChessPiece> CapturedPieces { get; set; }
+
+
+       
         public Player Opponent { get; set; }
-        public List<IChessPiece> TakenPieces { get; set; }
+
 
         public ChessGame()
         {
@@ -34,8 +41,15 @@ namespace ChessGameLibrary
             this.CurrentPlayer = player1;
             this.Opponent = player2;
 
+            CapturedPieces = new List<IChessPiece>();
+
+            log = new Logger();
+            
+
             PlayerList.Add(player1);
             PlayerList.Add(player2);
+
+            InitializeChessPieceList();
         }
 
         // Methods
@@ -246,17 +260,17 @@ namespace ChessGameLibrary
                         MovePiece(Blockers[blocker].GetValidMove(CurrentPlayer, Opponent)[x], Blockers[blocker], true);
 
                         if (CheckIfChecked() != true)
-                        {
+                    {
                             Blockers[blocker].ChessPiecePosition.X = tempX;
                             Blockers[blocker].ChessPiecePosition.Y = tempY;
                             nextPos = Blockers[blocker].GetValidMove(CurrentPlayer, Opponent)[x];
-                        }
+                    }
                         else
                         {
                             Blockers[blocker].ChessPiecePosition.X = tempX;
                             Blockers[blocker].ChessPiecePosition.Y = tempY;
-                        }
-                    }
+                }
+            }
 
                     movingPiece = Blockers[blocker];
                 }
@@ -296,22 +310,22 @@ namespace ChessGameLibrary
             }
             else
             {
-   
+
                 int mPiece = 0;
                 int randomMove = 0;
 
                 if (availablePieces.Count > 1)
-                {
+            {
                 re:
-                    Random piece = new Random();
+                Random piece = new Random();
                     mPiece = piece.Next(0, availablePieces.Count);
-
+ 
                     if (availablePieces[mPiece].PieceType == PieceType.King)
                         goto re;
 
                     if (availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count > 1)
                     {
-                        Random move = new Random();
+                Random move = new Random();
                         randomMove = move.Next(0, availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent).Count - 1);
                     }
 
@@ -335,8 +349,8 @@ namespace ChessGameLibrary
                         availablePieces[mPiece].ChessPiecePosition.Y = tempY;
                     }
 
-          
-                    nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
+
+                nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
                     movingPiece = availablePieces[mPiece];
                 }
                 else if (availablePieces.Count == 1)//If king
@@ -367,9 +381,9 @@ namespace ChessGameLibrary
                 else
                 {
                     //Cant move
-                }
-                
             }
+
+                Console.WriteLine(CurrentPlayer.Pieces[10].GetValidMove(CurrentPlayer, Opponent).Count);
 
         end:
             if (nextPos == null || movingPiece == null)
@@ -381,7 +395,7 @@ namespace ChessGameLibrary
                 log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
                 MovePiece(nextPos, movingPiece);
             }
-
+            
 
             ChangePlayer(CurrentPlayer); //Switch opponent and currentplayer
         }
@@ -483,15 +497,19 @@ namespace ChessGameLibrary
             //Startposition
             if (chessPiece.StartPosition == true)
                 chessPiece.StartPosition = false;
-
+            
             //Remove possible attacked piece if final move is done
             if (temp != true)
             {
-                for (int i = 0; i < Opponent.Pieces.Count; i++)
-                {
-                    if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
-                        Opponent.Pieces.RemoveAt(i);
-                }
+            for (int i = 0; i < Opponent.Pieces.Count; i++)
+            {
+                if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
+                { 
+                    var capturedPiece = Opponent.Pieces[i];
+
+                        CapturePiece(capturedPiece);
+            }
+            }
 
 
 
@@ -503,10 +521,10 @@ namespace ChessGameLibrary
                         if (CurrentPlayer.Pieces[i] == chessPiece)
                             CurrentPlayer.Pieces.RemoveAt(i);
                     }
-                    
+            
                     CurrentPlayer.Pieces.Add(new Queen(new Position(nextPosition.X, nextPosition.Y), 12, PieceType.Queen, chessPiece.PieceColor));
                 }
-            }
+        }
 
             //Moves piece to new position
             chessPiece.ChessPiecePosition.X = nextPosition.X;
@@ -523,9 +541,18 @@ namespace ChessGameLibrary
             }
             else
             {
-                this.CurrentPlayer = player1;
+                this.CurrentPlayer = player1; 
                 this.Opponent = player2;
             }
+
+            //this.CurrentPlayer = player; 
+        }
+
+        private void CapturePiece(IChessPiece chessPiece)
+        {
+            CapturedPieces.Add(chessPiece);
+            Opponent.Pieces.Remove(chessPiece);
+
         }
     }
 }

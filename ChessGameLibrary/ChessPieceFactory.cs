@@ -34,7 +34,7 @@ namespace ChessGameLibrary
                 pieces.Add(new Bishop(new Position(5, 0), 14, PieceType.Bishop, ChessColor.Black));
                 pieces.Add(new Knight(new Position(6, 0), 15, PieceType.Knight, ChessColor.Black));
                 pieces.Add(new Rook(new Position(7, 0), 16, PieceType.Rook, ChessColor.Black));
-
+                
             }
             else
             {

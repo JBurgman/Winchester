@@ -10,29 +10,41 @@ namespace ChessGameConsoleApplication
 {
     class TakenPieces : IChessBoardLayout
     {
+       
+        private List<IChessPiece> capturedPieces;
 
-        private List<IChessPiece> takenPieces = new List<IChessPiece>();
-
-
+        public TakenPieces(List<IChessPiece> capturedPieces)
+        {
+            this.capturedPieces = capturedPieces;
+        }
         public void Draw()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            string s = "P, K, B, P, P, B, R";
-            Console.SetCursorPosition(0, 12);
-            Console.WriteLine(s);
+            Console.BackgroundColor = ConsoleColor.Black;
 
-            Console.SetCursorPosition(0, 11);
+            Console.SetCursorPosition(0,15);
             Console.WriteLine("Captured pieces: ");
+           
 
 
-
-            foreach (IChessPiece piece in takenPieces)
+            foreach (IChessPiece piece in capturedPieces)
             {
-                Console.SetCursorPosition(0, 10);
-                Console.WriteLine(piece);
+                if (piece.PieceColor==ChessColor.White)
+                {
+                     Console.ForegroundColor = ConsoleColor.Cyan;
+                     Console.BackgroundColor = ConsoleColor.Black;
+                }
+                else
+                { 
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.BackgroundColor = ConsoleColor.Black;
             }
+                Console.Write(piece);
+            }
+            Console.SetCursorPosition(0, 18);
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Black;
+           
         }
-
-
     }
 }

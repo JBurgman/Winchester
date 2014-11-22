@@ -12,6 +12,7 @@ namespace ChessGameLibrary
         int PieceId { get; set; }
         bool StartPosition { get; set; }
         PieceType PieceType { get; set; }
+        bool StartPosition { get; set; }
         ChessColor PieceColor { get; set; }
 
         List<Position> GetValidMove(Player CurrentPlayer, Player Opponent);

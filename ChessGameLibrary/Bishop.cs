@@ -9,6 +9,7 @@ namespace ChessGameLibrary
     class Bishop : IChessPiece
     {
         public Position ChessPiecePosition { get; set; }
+        public bool StartPosition { get; set; }
         public int PieceId { get; set; }
         public bool StartPosition { get; set; }
         public PieceType PieceType { get; set; }
@@ -17,6 +18,7 @@ namespace ChessGameLibrary
         public Bishop(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
+            this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
@@ -134,7 +136,7 @@ namespace ChessGameLibrary
                         valid = false;
                         lastMove = true;
                         break;
-                    }
+        }
                 }
 
             sw:
@@ -211,9 +213,9 @@ namespace ChessGameLibrary
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
-                {
+        {
                     if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
-                    {
+            {
                         valid = false;
                         lastMove = true;
                         break;
@@ -225,7 +227,7 @@ namespace ChessGameLibrary
                 //Check if outside border
                 if (Moves[i].X < 0 || Moves[i].Y < 0)
                     valid = false;
-
+                
                 if (valid == true)
                     ValidMove.Add(Moves[i]);
 
@@ -234,6 +236,11 @@ namespace ChessGameLibrary
             }
 
             return ValidMove; //Returns list with valid moves
+        }
+
+        public override string ToString()
+        {
+            return String.Format("B");
         }
     }
 }

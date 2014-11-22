@@ -9,6 +9,7 @@ namespace ChessGameLibrary
     class Queen : IChessPiece
     {
         public Position ChessPiecePosition { get; set; }
+        public bool StartPosition { get; set; }
         public int PieceId { get; set; }
         public bool StartPosition { get; set; }
         public PieceType PieceType { get; set; }
@@ -16,6 +17,7 @@ namespace ChessGameLibrary
         public Queen(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
+            this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;
@@ -367,9 +369,9 @@ namespace ChessGameLibrary
 
                 //Checks square for players piece
                 for (int x = 0; x < currentPlayer.Pieces.Count; x++)
-                {
+        {
                     if (Moves[i].X == currentPlayer.Pieces[x].ChessPiecePosition.X && Moves[i].Y == currentPlayer.Pieces[x].ChessPiecePosition.Y)
-                    {
+            {
                         valid = false;
                         lastMove = true;
                         break;
@@ -432,6 +434,11 @@ namespace ChessGameLibrary
             }
 
             return ValidMove; //Returns list with valid moves
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Q");
         }
 
     }

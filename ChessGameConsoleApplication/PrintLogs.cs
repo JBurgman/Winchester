@@ -12,7 +12,7 @@ namespace ChessGameConsoleApplication
     class PrintLogs : IChessBoardLayout
     {
 
-
+        
         private List<string> logPost {get; set; }
 
 
@@ -39,15 +39,30 @@ namespace ChessGameConsoleApplication
         public void Draw()
         {
 
-            Console.SetCursorPosition(15, 0);
 
 
-                for (int y = 1; y < 6; y++)
-                {
-                    Console.SetCursorPosition(15, y);
-                    Console.WriteLine(logPost[(logPost.Count - y)]);
-                }
-            
+
+            for (int y = 1; y < 6; y++)
+            {
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(20, y);
+                Console.WriteLine(logPost[(logPost.Count - y)]);
+            }
+
+                
+                //foreach (var item in logPost)
+                //{
+                    
+                //        Console.SetCursorPosition(20, 3);
+                //        Console.ForegroundColor = ConsoleColor.White;
+                //        Console.WriteLine(item);
+                 
+                    
+                //}
+                
+               
+                   
         }
     }
 }

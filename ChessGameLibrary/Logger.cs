@@ -8,10 +8,11 @@ namespace ChessGameLibrary
 {
     public class Logger
     {
-        public List<string> LogList = new List<string>();
+        public List<string> LogList;
 
         public void Log(Player currentPlayer, IChessPiece piece, Position currentPos, Position nextPos)
         {
+           
             //Player
             string player;
 
@@ -33,20 +34,33 @@ namespace ChessGameLibrary
             string nextY = char.ToString(numbers[nextPos.Y]);
 
             //Add move to log
-            LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            //LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+            if (piece.PieceType == PieceType.Pawn)
+            {
+           
+                LogList.Add(player + " moved: " + piece.ToString() + " from " + currentX + currentY + " to " + nextX +
+                            nextY);
+            }
+            else
+            {
+                
+                LogList.Add(player + " moved: " + piece.ToString() + " from " + currentX + currentY + " to " + nextX +
+                            nextY);
+            }
         }
+
 
         public Logger()
         {
-
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-            LogList.Add("");
-
+            LogList = new List<string>();
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
+            LogList.Add(" ");
         }
     }
 }

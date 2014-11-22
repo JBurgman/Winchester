@@ -27,7 +27,7 @@ namespace ChessGameConsoleApplication
             {
                     
                     Console.ForegroundColor = PieceColor;
-                    Console.SetCursorPosition(Position.X , Position.Y);
+                    Console.SetCursorPosition(Position.X+2 , Position.Y+2);
                     Console.Write(Symbol);
 
             }
