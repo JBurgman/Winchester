@@ -218,7 +218,6 @@ namespace ChessGameLibrary
                     }
                 }
 
-                Console.WriteLine(Blockers.Count);
                 
                 if (Attackers.Count != 0) //Attack threat
                 {
@@ -340,7 +339,7 @@ namespace ChessGameLibrary
                     nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
                     movingPiece = availablePieces[mPiece];
                 }
-                else //If king
+                else if (availablePieces.Count == 1)//If king
                 {
                     //Check for safe square and set next random next pos
                     for (int i = 0; i < availablePieces[0].GetValidMove(CurrentPlayer, Opponent).Count; i++)
@@ -365,25 +364,23 @@ namespace ChessGameLibrary
                         }
                     }
                 }
+                else
+                {
+                    //Cant move
+                }
                 
             }
 
         end:
-                if (nextPos == null || movingPiece == null)
-                {
-                    GameOver = true;
-                }
-                else
-                {
-                    log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
-                    MovePiece(nextPos, movingPiece);
-                }
-
-                
-           
-
-
-            //Temporary ^^^^
+            if (nextPos == null || movingPiece == null)
+            {
+                GameOver = true;
+            }
+            else
+            {
+                log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
+                MovePiece(nextPos, movingPiece);
+            }
 
 
             ChangePlayer(CurrentPlayer); //Switch opponent and currentplayer
@@ -506,7 +503,7 @@ namespace ChessGameLibrary
                         if (CurrentPlayer.Pieces[i] == chessPiece)
                             CurrentPlayer.Pieces.RemoveAt(i);
                     }
-
+                    
                     CurrentPlayer.Pieces.Add(new Queen(new Position(nextPosition.X, nextPosition.Y), 12, PieceType.Queen, chessPiece.PieceColor));
                 }
             }
