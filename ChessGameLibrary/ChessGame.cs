@@ -201,8 +201,17 @@ namespace ChessGameLibrary
                 if (Opponent.Pieces[i].ChessPiecePosition.X == nextPosition.X && Opponent.Pieces[i].ChessPiecePosition.Y == nextPosition.Y)
                 { 
                     var capturedPiece = Opponent.Pieces[i];
+                    // Check if King!
+                    if (capturedPiece!=Opponent.Pieces[12])
+                    {
+                         CapturePiece(capturedPiece);
+                    }
+                    else
+                    {
 
-                        CapturePiece(capturedPiece);
+                        return;
+                    }
+                       
             }
             }
 
