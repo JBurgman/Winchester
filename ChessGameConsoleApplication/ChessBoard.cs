@@ -59,7 +59,7 @@ namespace ChessGameConsoleApplication
                 chessGame.MoveNext();
                 Console.WriteLine();
                 //Console.ReadKey();//TODO:Time delay insted
-                Thread.Sleep(4000);
+                Thread.Sleep(2000);
 
                
                 
