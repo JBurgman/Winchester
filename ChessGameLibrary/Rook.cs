@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChessGameLibrary
 {
-    class Rook:IChessPiece
+    class Rook : IChessPiece
     {
         public Position ChessPiecePosition { get; set; }
         public int PieceId { get; set; }
