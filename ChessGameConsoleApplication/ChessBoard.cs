@@ -18,7 +18,7 @@ namespace ChessGameConsoleApplication
         public ChessGame chessGame;
         private Tiles tiles;
        
-        Position position;// Needed?/JE
+        Position position;//
         
         // Properties
         public Position Position { get; set; }
