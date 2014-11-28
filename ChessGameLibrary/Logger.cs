@@ -38,13 +38,13 @@ namespace ChessGameLibrary
             if (piece.PieceType == PieceType.Pawn)
             {
            
-                LogList.Add(player + " moved: " + piece.ToString() + " from " + currentX + currentY + " to " + nextX +
+                LogList.Add(player + " moved: " + piece.PieceType + " from " + currentX + currentY + " to " + nextX +
                             nextY);
             }
             else
             {
                 
-                LogList.Add(player + " moved: " + piece.ToString() + " from " + currentX + currentY + " to " + nextX +
+                LogList.Add(player + " moved: " + piece.PieceType + " from " + currentX + currentY + " to " + nextX +
                             nextY);
             }
         }
