@@ -17,7 +17,7 @@ namespace ChessGameLibrary
         public Pawn(Position chessPiecePosition, int pieceId, PieceType pieceType, ChessColor pieceColor)
         {
             this.ChessPiecePosition = chessPiecePosition;
-            this.StartPosition = true ;
+            this.StartPosition = true;
             this.PieceId = pieceId;
             this.PieceType = pieceType;
             this.PieceColor = pieceColor;

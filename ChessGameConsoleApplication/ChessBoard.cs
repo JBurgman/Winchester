@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ChessGameLibrary;
 
@@ -17,7 +18,7 @@ namespace ChessGameConsoleApplication
         public ChessGame chessGame;
         private Tiles tiles;
        
-        Position position;// Needed?/JE
+        Position position;//
         
         // Properties
         public Position Position { get; set; }
@@ -55,12 +56,21 @@ namespace ChessGameConsoleApplication
                 
 
                 //Tell the game engine to move next
-                chessGame.MoveNext();//TODO:Change to MoveNext()
+                chessGame.MoveNext();
                 Console.WriteLine();
-                Console.ReadKey();//TODO:Time delay insted
+                //Console.ReadKey();//TODO:Time delay insted
+                Thread.Sleep(2000);
+
+               
+                
+
+
                 Console.Clear();
             }
         }
+
+       
+
 
         /// <summary>
         /// Method for setting up the chesspieces on the board

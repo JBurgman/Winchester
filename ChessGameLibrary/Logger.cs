@@ -35,6 +35,7 @@ namespace ChessGameLibrary
 
             //Add move to log
             //LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+
             if (piece.PieceType == PieceType.Pawn)
             {
            
@@ -46,7 +47,7 @@ namespace ChessGameLibrary
                 
                 LogList.Add(player + " moved: " + piece.PieceType + " from " + currentX + currentY + " to " + nextX +
                             nextY);
-            }
+            }    
         }
 
 
