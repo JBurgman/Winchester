@@ -149,6 +149,7 @@ namespace ChessGameLibrary
             {
                 log.Log(CurrentPlayer, movingPiece, movingPiece.ChessPiecePosition, nextPos);
                 MovePiece(nextPos, movingPiece);
+                movingPiece.StartPosition = false;// Moved from startposition
             }
             
             //Temporary ^^^^
