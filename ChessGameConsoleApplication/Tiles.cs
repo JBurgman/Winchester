@@ -32,7 +32,7 @@ namespace ChessGameConsoleApplication
                 for (int j = 0; j < this.Height; j++)
                 {
                     if (((i%2 == 0) && (j%2 == 0)) || ((i%2 == 1) && (j%2 == 1)))
-                        // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+                        // Om bägge koordinaterna är jämna eller bägge koordinaterna är udda
                     {
                         Console.ForegroundColor = ConsoleColor.DarkGray;
                         tileColor = ConsoleColor.DarkGray;
@@ -58,7 +58,7 @@ namespace ChessGameConsoleApplication
         public ConsoleColor GetTileColor(Position pos)
         {
             if (((pos.X % 2 == 0) && (pos.Y % 2 == 0)) || ((pos.X % 2 == 1) && (pos.Y % 2 == 1)))
-            // Om bägge koordinaterna är udda eller bägge koordinaterna är jämna
+            // Om bägge koordinaterna är jämna eller bägge koordinaterna är udda
             {
                 return ConsoleColor.DarkGray;
             }

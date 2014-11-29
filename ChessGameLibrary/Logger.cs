@@ -24,19 +24,20 @@ namespace ChessGameLibrary
             //Convert X-positions to letters
             try
             {
-                string letters = "ABCDEFGH";
+            string letters = "ABCDEFGH";
+ 
+            string currentX = char.ToString(letters[currentPos.X]);
+            string nextX = char.ToString(letters[nextPos.X]);
 
-                string currentX = char.ToString(letters[currentPos.X]);
-                string nextX = char.ToString(letters[nextPos.X]);
+            //Change Y-positions to correct number
+            string numbers = "87654321";
 
-                //Change Y-positions to correct number
-                string numbers = "87654321";
+            string currentY = char.ToString(numbers[currentPos.Y]);
+            string nextY = char.ToString(numbers[nextPos.Y]);
 
-                string currentY = char.ToString(numbers[currentPos.Y]);
-                string nextY = char.ToString(numbers[nextPos.Y]);
-           
             //Add move to log
             //LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
+
             if (piece.PieceType == PieceType.Pawn)
             {
            

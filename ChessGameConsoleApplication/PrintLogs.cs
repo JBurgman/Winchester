@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
-using System.Text;
+﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Text;
 using System.Threading.Tasks;
 using ChessGameLibrary;
 
 namespace ChessGameConsoleApplication
 {
-    class PrintLogs : IChessBoardLayout
+    internal class PrintLogs : IChessBoardLayout
+
     {
-
-        
-        private List<string> logPost {get; set; }
-
-
+        private List<string> logPost { get; set; }
 
         public PrintLogs(List<string> LogPost)
         {
             this.logPost = LogPost;
-
         }
 
         public PrintLogs()
@@ -38,31 +35,13 @@ namespace ChessGameConsoleApplication
         /// </summary>
         public void Draw()
         {
-
-
-
-
             for (int y = 1; y < 6; y++)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(20, y);
-                Console.WriteLine(logPost[(logPost.Count - y)]);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(20, y);
+                    Console.WriteLine(logPost[(logPost.Count - y)]);
             }
-
-                
-                //foreach (var item in logPost)
-                //{
-                    
-                //        Console.SetCursorPosition(20, 3);
-                //        Console.ForegroundColor = ConsoleColor.White;
-                //        Console.WriteLine(item);
-                 
-                    
-                //}
-                
-               
-                   
         }
     }
 }
