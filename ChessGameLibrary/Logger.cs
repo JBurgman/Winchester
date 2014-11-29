@@ -22,17 +22,19 @@ namespace ChessGameLibrary
                 player = "Black";
 
             //Convert X-positions to letters
-            string letters = "ABCDEFGH";
- 
-            string currentX = char.ToString(letters[currentPos.X]);
-            string nextX = char.ToString(letters[nextPos.X]);
+            try
+            {
+                string letters = "ABCDEFGH";
 
-            //Change Y-positions to correct number
-            string numbers = "87654321";
+                string currentX = char.ToString(letters[currentPos.X]);
+                string nextX = char.ToString(letters[nextPos.X]);
 
-            string currentY = char.ToString(numbers[currentPos.Y]);
-            string nextY = char.ToString(numbers[nextPos.Y]);
+                //Change Y-positions to correct number
+                string numbers = "87654321";
 
+                string currentY = char.ToString(numbers[currentPos.Y]);
+                string nextY = char.ToString(numbers[nextPos.Y]);
+           
             //Add move to log
             //LogList.Add(player + " moved " + piece.PieceType + " from " + currentX + currentY + " to " + nextX + nextY);
             if (piece.PieceType == PieceType.Pawn)
@@ -47,6 +49,9 @@ namespace ChessGameLibrary
                 LogList.Add(player + " moved: " + piece.ToString() + " from " + currentX + currentY + " to " + nextX +
                             nextY);
             }
+            }
+            catch(Exception e)
+            { }
         }
 
 

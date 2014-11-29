@@ -56,7 +56,7 @@ namespace ChessGameLibrary
 
 
 
-        public void InitializeChessPieceList() // Create chess pieces and store them in players lists. Done.
+        public void InitializeChessPieceList() // Create chess pieces and store them in players lists.
         {
             foreach (var player in PlayerList)
             {
@@ -65,7 +65,7 @@ namespace ChessGameLibrary
         }
 
         
-        public void MoveNext() //not done
+        public void MoveNext() 
         {
             Position nextPos = null;
             IChessPiece movingPiece = null;
@@ -202,7 +202,7 @@ namespace ChessGameLibrary
                 { 
                     var capturedPiece = Opponent.Pieces[i];
                     // Check if King!
-                    if (capturedPiece!=Opponent.Pieces[12])
+                    if (capturedPiece.PieceType!=PieceType.King)
                     {
                          CapturePiece(capturedPiece);
                     }
