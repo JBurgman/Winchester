@@ -109,7 +109,7 @@ namespace ChessGameLibrary
                     {
                         prioritisedPieces.Add(threathenedPieces[i]);
                         nextPos = availablePieces[i].GetValidMove(CurrentPlayer, Opponent)[i];
-                        MovePiece(nextPos, prioritisedPieces[0]);
+                        MovePiece(nextPos, prioritisedPieces[i]);
                 }
                     
                 }
@@ -122,7 +122,7 @@ namespace ChessGameLibrary
                     {
                         prioritisedPieces.Add(availablePieces[i]);
                         nextPos = availablePieces[i].GetValidMove(CurrentPlayer, Opponent)[i];
-                        MovePiece(nextPos, prioritisedPieces[0]);
+                        MovePiece(nextPos, prioritisedPieces[i]);
                     }
                     
                 }

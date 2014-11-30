@@ -64,6 +64,9 @@ namespace ChessGameConsoleApplication
                 // Stop the game
                 if (chessGame.CapturedPieces.Count==5)
                 {
+                    
+                   
+                    DrawLogPost(new PrintLogs(), chessGame.log.LogList);
                     DrawTakenPieces(new TakenPieces(chessGame.CapturedPieces));
                     running = false;
                     break;
