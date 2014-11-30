@@ -42,8 +42,8 @@ namespace ChessGameConsoleApplication
         /// </summary>
         public void Start()
         {
-
-            while (true)
+            bool running = true;
+            while (running)
             {
                 // Draw the chess board and set up the pieces
                 DrawChessBoard(tiles);
@@ -61,12 +61,22 @@ namespace ChessGameConsoleApplication
                 //Console.ReadKey();//TODO:Time delay insted
                 Thread.Sleep(2000);
 
-               
+                // Stop the game
+                if (chessGame.CapturedPieces.Count==5)
+                {
+                    DrawTakenPieces(new TakenPieces(chessGame.CapturedPieces));
+                    running = false;
+                    break;
+                }
                 
 
 
                 Console.Clear();
+               
             }
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Game over!");
+            Console.ReadKey();
         }
 
        

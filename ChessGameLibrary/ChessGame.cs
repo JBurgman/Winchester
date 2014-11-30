@@ -87,31 +87,44 @@ namespace ChessGameLibrary
         
             //Creates a list of threatened pieces
             List<IChessPiece> threathenedPieces = new List<IChessPiece>();
+
+            //Creates list with the most prioritised pieces
+            List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
+
             for (int i = 0; i < availablePieces.Count; i++)
             {
                 if (CheckIfThreatened(availablePieces[i].PieceId) == true)
                     threathenedPieces.Add(CurrentPlayer.Pieces[i]);
+               
+
             }
       
-            //Creates list with the most prioritised pieces
-            List<IChessPiece> prioritisedPieces = new List<IChessPiece>();
+           
 
             if (threathenedPieces.Count > 0)
         {
                 for (int i = 0; i < threathenedPieces.Count; i++)    //Prioritise threathened pieces that can attack 
                 {
-                    if (canAttack(threathenedPieces[i]) == true)
+                    if (canAttack(threathenedPieces[i]) == true&& threathenedPieces[i].PieceType==PieceType.King)
+                    {
                         prioritisedPieces.Add(threathenedPieces[i]);
+                        nextPos = availablePieces[i].GetValidMove(CurrentPlayer, Opponent)[i];
+                        MovePiece(nextPos, prioritisedPieces[0]);
+                }
+                    
                 }
             }
             else if (prioritisedPieces.Count == 0 && availablePieces.Count > 0)  //If none of the threathened pieces can attack
             {
                 for (int i = 0; i < availablePieces.Count; i++)
                 {
-                    if (canAttack(availablePieces[i]) == true)
+                    if (canAttack(availablePieces[i]) == true && availablePieces[i].PieceType == PieceType.King)
                     {
                         prioritisedPieces.Add(availablePieces[i]);
+                        nextPos = availablePieces[i].GetValidMove(CurrentPlayer, Opponent)[i];
+                        MovePiece(nextPos, prioritisedPieces[0]);
                     }
+                    
                 }
             }
 
@@ -136,6 +149,10 @@ namespace ChessGameLibrary
                 nextPos = availablePieces[mPiece].GetValidMove(CurrentPlayer, Opponent)[randomMove];
 
                 movingPiece = availablePieces[mPiece];
+                if (movingPiece.PieceType==PieceType.King)
+                {
+                    movingPiece=availablePieces[piece.Next(0, availablePieces.Count)];
+                }
             }
 
                 Console.WriteLine(CurrentPlayer.Pieces[0].GetValidMove(CurrentPlayer, Opponent).Count);
@@ -184,12 +201,12 @@ namespace ChessGameLibrary
         {
             bool threatened = false;
 
-            //Loops through opponents pieces
-            for (int i = 0; i < CurrentPlayer.Pieces.Count; i++)
-            { }
+            if (PieceId==12)
+            {
+                threatened=true;
+            }
 
-
-                return threatened;
+            return threatened;    
         }
 
 
